@@ -18,7 +18,11 @@ namespace MTControl.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Faqs()
+        {
+            return View();
+        }
+        public IActionResult About()
         {
             return View();
         }
