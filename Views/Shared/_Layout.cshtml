@@ -1,30 +1,40 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es-ar">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MTControl</title>
+    <title>@ViewData [ "Title" ] - MTControl</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MTControl.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MTControl</a>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 verde">
+            <div class="container-fluid ">
+                <img src="~/img/logo.png" alt="Logo" class="img-fluid" />
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1 nav-tabs justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Profiles" asp-action="Profiles">Perfiles</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Report" asp-action="Profiles">Informes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Faq">Ayuda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">Acerca de</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -32,18 +42,75 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            @RenderBody()
+            @RenderBody ()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - MTControl - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="text-center mb-4">
+                <h2>Tech Para Contadores</h2>
+            </div>
+            <div>
+                <div class="contacto text-center">
+                    <h2>Contacto:</h2>
+                </div>
+                <div class="logos  ">
+                    <div class="col">
+                        <a href="https://www.facebook.com/tpc">
+                            <img src="~/img/facebook.svg" alt="Facebook" class="img-fluid" />
+                        </a>
+                    </div>
+                    <div class="col">
+                        <div class="logo">
+                            <a href="https://www.twitter.com/tpc">
+                                <img src="~/img/x.svg" alt="X" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+
+                        <div class="logo">
+                            <a href="https://whatapp">
+                                <img src="~/img/whastapp.svg" alt="WhatsApp" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+
+                        <div class="logo">
+                            <a href="https://www.instagram.com/tpc">
+                                <img src="~/img/instagram.svg" alt="Instagram" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="logo">
+
+                            <a href="mailto:tpc@gmail.com">
+                                <img src="~/img/mail.svg" alt="Email" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+
+                        <div class="logo">
+                            <img src="~/img/logo.png" alt="Logo" class="img-fluid" />
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <h2>© 2025 Reservados todos los derechos</h2>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection ( "Scripts", required: false )
 </body>
 </html>
+

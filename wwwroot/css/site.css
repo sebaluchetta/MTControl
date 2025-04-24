@@ -20,3 +20,10 @@ html {
 body {
   margin-bottom: 60px;
 }
+verde {
+    background-color: #93B874;
+}
+.logo img {
+    max-width: auto;
+    height: auto;
+}
