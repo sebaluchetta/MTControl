@@ -25,3 +25,8 @@ body {
     max-width: auto;
     height: auto;
 }
+.nombre {
+    color: #525252;
+    font-size: xx-large;
+    font-weight: 900;
+}
