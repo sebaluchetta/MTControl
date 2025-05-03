@@ -18,8 +18,17 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 0px;
+ 
 }
+.navbar {
+    background: #93B874;
+    
+}
+.navbar-toggler {
+    
+}
+
 
 .logo img {
     max-width: auto;
