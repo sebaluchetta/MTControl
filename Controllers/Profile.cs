@@ -13,5 +13,10 @@ namespace MTControl.Controllers
             return View();
         }
 
+        public IActionResult Editar ()
+        {
+            return View ("ProfileCrud");
+        }
+
     }
 }
