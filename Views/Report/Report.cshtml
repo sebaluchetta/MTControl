@@ -2,7 +2,210 @@
     ViewData [ "Title" ] = "REPORTE";
 }
 
-<div class="text-center text-decoration-underline nombre">
-    REPORTE
+@{
+    ViewData [ "Title" ] = "PERFILES";
+}
+<div class="container-fluid">
+    <div class="col">
+        <div class="row row-cols-auto g-2">
+            <div class="col">
+                <a class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a Excel Perfil" asp-controller="Profile" asp-action="Profiles/ExpExcel">
+                    <i class="bi bi-file-earmark-excel-fill">
+
+                        <p class="d-none d-md-block d-lg-inline"> Exportar a Excel</p>
+                    </i>
+                </a>
+
+            </div>
+            <div class="col">
+                <a class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="Profile" asp-action="Profiles/ExpPDF">
+                    <i class="bi bi-file-earmark-pdf-fill">
+
+                        <p class="d-none d-md-block d-lg-inline">Exportar a PDF</p>
+                    </i>
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="table-responsive-md mt-1">
+        <table class="table table-bordered table-striped table-hover ">
+            <th>Acción</th>
+            <th>Código</th>
+            <th>Razón social</th>
+            <th>CUIT</th>
+            <th>Actividad</th>
+            <th>Categoria</th>
+            <th>IIBB Umos 12 meses</th>
+            <th>Control tope categoria</th>
+            <th>Control tope Regimén</th>
+            <th>Control Relacion compras/ventas</th>
+            <tbody>
+                <tr>
+                    <td class="g-1">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                    <td>1</td>
+                    <td>Juan Subira</td>
+                    <td>20-32113739-4</td>
+                    <td>Venta de cosas muebles</td>
+                    <td>F</td>
+                    <td>$20.000.000,00</td>
+                    <td>$4.000.000,00</td>
+                    <td><i class="bi bi-patch-check-fill"></i></td>
+                    <td><i class="bi bi-ban"></i></td>
+                </tr>
+                <tr>
+                    <td class="g-1">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                    <td>2</td>
+                    <td>María Torres</td>
+                    <td>27-28563214-8</td>
+                    <td>Locación de servicios</td>
+                    <td>C</td>
+                    <td>$15.500.000,00</td>
+                    <td>$2.750.000,00</td>
+                    <td><i class="bi bi-ban"></i></td>
+                    <td><i class="bi bi-patch-check-fill"></i></td>
+                </tr>
+                <tr>
+                    <td class="g-1">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                    <td>3</td>
+                    <td>Luis Gómez</td>
+                    <td>23-19485736-5</td>
+                    <td>Servicios profesionales</td>
+                    <td>B</td>
+                    <td>$18.200.000,00</td>
+                    <td>$3.400.000,00</td>
+                    <td><i class="bi bi-ban"></i></td>
+                    <td><i class="bi bi-ban"></i></td>
+                </tr>
+                <tr>
+                    <td class="g-1">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                    <td>4</td>
+                    <td>Andrea Paz</td>
+                    <td>27-39845712-9</td>
+                    <td>Comercio minorista</td>
+                    <td>A</td>
+                    <td>$9.800.000,00</td>
+                    <td>$1.500.000,00</td>
+                    <td><i class="bi bi-patch-check-fill"></i></td>
+                    <td><i class="bi bi-patch-check-fill"></i></td>
+                </tr>
+                <tr>
+                    <td class="g-1">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                    <td>5</td>
+                    <td>Ricardo Luna</td>
+                    <td>20-27584937-1</td>
+                    <td>Reparaciones</td>
+                    <td>D</td>
+                    <td>$7.200.000,00</td>
+                    <td>$800.000,00</td>
+                    <td><i class="bi bi-patch-check-fill"></i></td>
+                    <td><i class="bi bi-ban"></i></td>
+                </tr>
+                <tr>
+                    <td class="g-1">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                    <td>6</td>
+                    <td>Sofía Martínez</td>
+                    <td>27-38495728-3</td>
+                    <td>Servicios gastronómicos</td>
+                    <td>C</td>
+                    <td>$16.300.000,00</td>
+                    <td>$2.900.000,00</td>
+                    <td><i class="bi bi-ban"></i></td>
+                    <td><i class="bi bi-patch-check-fill"></i></td>
+                </tr>
+                <tr>
+                    <td class="g-1">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                    <td>7</td>
+                    <td>Tomás Herrera</td>
+                    <td>20-28473928-6</td>
+                    <td>Venta mayorista</td>
+                    <td>B</td>
+                    <td>$21.000.000,00</td>
+                    <td>$5.500.000,00</td>
+                    <td><i class="bi bi-patch-check-fill"></i></td>
+                    <td><i class="bi bi-ban"></i></td>
+                </tr>
+                <tr>
+                    <td class="g-1">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                    <td>8</td>
+                    <td>Lucía Ríos</td>
+                    <td>27-39587219-4</td>
+                    <td>Consultoría</td>
+                    <td>A</td>
+                    <td>$8.500.000,00</td>
+                    <td>$1.100.000,00</td>
+                    <td><i class="bi bi-ban"></i></td>
+                    <td><i class="bi bi-ban"></i></td>
+                </tr>
+                <tr>
+                    <td class="g-1">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                    <td>9</td>
+                    <td>Carlos Varela</td>
+                    <td>23-17593827-2</td>
+                    <td>Alquiler de inmuebles</td>
+                    <td>E</td>
+                    <td>$12.400.000,00</td>
+                    <td>$600.000,00</td>
+                    <td><i class="bi bi-patch-check-fill"></i></td>
+                    <td><i class="bi bi-patch-check-fill"></i></td>
+                </tr>
+                <tr>
+                    <td class="g-1">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                    <td>10</td>
+                    <td>Paula Díaz</td>
+                    <td>27-29837461-5</td>
+                    <td>Diseño gráfico</td>
+                    <td>B</td>
+                    <td>$10.700.000,00</td>
+                    <td>$900.000,00</td>
+                    <td><i class="bi bi-ban"></i></td>
+                    <td><i class="bi bi-patch-check-fill"></i></td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
 </div>
 
