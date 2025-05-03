@@ -1,15 +1,13 @@
-﻿@{
+﻿ @{
     ViewData [ "Title" ] = "REPORTE";
 }
 
-@{
-    ViewData [ "Title" ] = "PERFILES";
-}
+
 <div class="container-fluid">
     <div class="col">
         <div class="row row-cols-auto g-2">
             <div class="col">
-                <a class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a Excel Perfil" asp-controller="Profile" asp-action="Profiles/ExpExcel">
+                <a class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a Excel Perfil" asp-controller="Profile" asp-action="ExpExcel">
                     <i class="bi bi-file-earmark-excel-fill">
 
                         <p class="d-none d-md-block d-lg-inline"> Exportar a Excel</p>
@@ -18,7 +16,7 @@
 
             </div>
             <div class="col">
-                <a class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="Profile" asp-action="Profiles/ExpPDF">
+                <a class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="Profile" asp-action="ExpPDF">
                     <i class="bi bi-file-earmark-pdf-fill">
 
                         <p class="d-none d-md-block d-lg-inline">Exportar a PDF</p>
@@ -44,7 +42,7 @@
             <tbody>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                     </td>
@@ -55,12 +53,12 @@
                     <td>F</td>
                     <td>$20.000.000,00</td>
                     <td>$4.000.000,00</td>
-                    <td><i class="bi bi-patch-check-fill"></i></td>
-                    <td><i class="bi bi-ban"></i></td>
+                    <td><i class="bi bi-check-circle-fill alert-success"></i></td>
+                    <td><i class="bi bi-x-circle-fill alert-danger"></i></td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                     </td>
@@ -71,12 +69,12 @@
                     <td>C</td>
                     <td>$15.500.000,00</td>
                     <td>$2.750.000,00</td>
-                    <td><i class="bi bi-ban"></i></td>
-                    <td><i class="bi bi-patch-check-fill"></i></td>
+                    <td><i class="bi bi-x-circle-fill alert-danger"></i></td>
+                    <td><i class="bi bi-check-circle-fill alert-success"></i></td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                     </td>
@@ -87,12 +85,12 @@
                     <td>B</td>
                     <td>$18.200.000,00</td>
                     <td>$3.400.000,00</td>
-                    <td><i class="bi bi-ban"></i></td>
-                    <td><i class="bi bi-ban"></i></td>
+                    <td><i class="bi bi-x-circle-fill alert-danger"></i></td>
+                    <td><i class="bi bi-x-circle-fill alert-danger"></i></td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                     </td>
@@ -103,12 +101,12 @@
                     <td>A</td>
                     <td>$9.800.000,00</td>
                     <td>$1.500.000,00</td>
-                    <td><i class="bi bi-patch-check-fill"></i></td>
-                    <td><i class="bi bi-patch-check-fill"></i></td>
+                    <td><i class="bi bi-check-circle-fill alert-success"></i></td>
+                    <td><i class="bi bi-check-circle-fill alert-success"></i></td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                     </td>
@@ -119,12 +117,12 @@
                     <td>D</td>
                     <td>$7.200.000,00</td>
                     <td>$800.000,00</td>
-                    <td><i class="bi bi-patch-check-fill"></i></td>
-                    <td><i class="bi bi-ban"></i></td>
+                    <td><i class="bi bi-check-circle-fill alert-success"></i></td>
+                    <td><i class="bi bi-x-circle-fill alert-danger"></i></td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                     </td>
@@ -135,12 +133,12 @@
                     <td>C</td>
                     <td>$16.300.000,00</td>
                     <td>$2.900.000,00</td>
-                    <td><i class="bi bi-ban"></i></td>
-                    <td><i class="bi bi-patch-check-fill"></i></td>
+                    <td><i class="bi bi-x-circle-fill alert-danger"></i></td>
+                    <td><i class="bi bi-check-circle-fill alert-success"></i></td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                     </td>
@@ -151,12 +149,12 @@
                     <td>B</td>
                     <td>$21.000.000,00</td>
                     <td>$5.500.000,00</td>
-                    <td><i class="bi bi-patch-check-fill"></i></td>
-                    <td><i class="bi bi-ban"></i></td>
+                    <td><i class="bi bi-check-circle-fill alert-success"></i></td>
+                    <td><i class="bi bi-x-circle-fill alert-danger"></i></td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                     </td>
@@ -167,12 +165,12 @@
                     <td>A</td>
                     <td>$8.500.000,00</td>
                     <td>$1.100.000,00</td>
-                    <td><i class="bi bi-ban"></i></td>
-                    <td><i class="bi bi-ban"></i></td>
+                    <td><i class="bi bi-x-circle-fill alert-danger"></i></td>
+                    <td><i class="bi bi-x-circle-fill alert-danger"></i></td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                     </td>
@@ -183,12 +181,12 @@
                     <td>E</td>
                     <td>$12.400.000,00</td>
                     <td>$600.000,00</td>
-                    <td><i class="bi bi-patch-check-fill"></i></td>
-                    <td><i class="bi bi-patch-check-fill"></i></td>
+                    <td><i class="bi bi-check-circle-fill alert-success"></i></td>
+                    <td><i class="bi bi-check-circle-fill alert-success"></i></td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                     </td>
@@ -199,8 +197,8 @@
                     <td>B</td>
                     <td>$10.700.000,00</td>
                     <td>$900.000,00</td>
-                    <td><i class="bi bi-ban"></i></td>
-                    <td><i class="bi bi-patch-check-fill"></i></td>
+                    <td><i class="bi bi-x-circle-fill alert-danger"></i></td>
+                    <td><i class="bi bi-check-circle-fill alert-success"></i></td>
                 </tr>
             </tbody>
 

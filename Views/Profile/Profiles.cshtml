@@ -5,7 +5,7 @@
     <div class="col">
         <div class="row row-cols-auto g-2">
             <div class="col">
-                <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Agregar Perfil" asp-controller="Profile" asp-action="Profiles/nuevo">
+                <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Agregar Perfil" asp-controller="Profile" asp-action="Nuevo">
                     <i class="bi bi-person-plus-fill">
                         <p class="d-none d-md-block d-lg-inline"> Nuevo</p>
                     </i>
@@ -13,7 +13,7 @@
             </div>
 
             <div class="col">
-                <a class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a Excel Perfil" asp-controller="Profile" asp-action="Profiles/ExpExcel">
+                <a class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a Excel Perfil" asp-controller="Profile" asp-action="ExpExcel">
                     <i class="bi bi-file-earmark-excel-fill">
 
                         <p class="d-none d-md-block d-lg-inline"> Exportar a Excel</p>
@@ -22,7 +22,7 @@
 
             </div>
             <div class="col">
-                <a class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="Profile" asp-action="Profiles/ExpPDF">
+                <a class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="Profile" asp-action="ExpPDF">
                     <i class="bi bi-file-earmark-pdf-fill">
 
                         <p class="d-none d-md-block d-lg-inline">Exportar a PDF</p>
@@ -43,13 +43,14 @@
             <th>Categoria</th>
             <th>IIBB Umos 12 meses</th>
             <th>Compras Umos 12 meses</th>
+            <th>Activo</th>
             <tdoby>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiarl">
+                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Elimiar">
 
                             <i class="bi bi-trash3-fill"></i>
                         </a>
@@ -61,13 +62,20 @@
                     <td>F</td>
                     <td>$20.000.000,00</td>
                     <td>$4.000.000,00</td>
+                    <td>
+                        <div class="col-12 col-lg-6 mt-lg-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked disabled>
+                            </div>
+                    </td>
+                    
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
+                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Eliminar">
                             <i class="bi bi-trash3-fill"></i>
                         </a>
                     </td>
@@ -78,13 +86,19 @@
                     <td>C</td>
                     <td>$15.500.000,00</td>
                     <td>$2.750.000,00</td>
+                    <td>
+                        <div class="col-12 col-lg-6 mt-lg-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked disabled>
+                            </div>
+                    </td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
+                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Eliminar">
                             <i class="bi bi-trash3-fill"></i>
                         </a>
                     </td>
@@ -95,13 +109,19 @@
                     <td>H</td>
                     <td>$18.200.000,00</td>
                     <td>$3.600.000,00</td>
+                    <td>
+                        <div class="col-12 col-lg-6 mt-lg-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" unchecked disabled>
+                            </div>
+                    </td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
+                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Eliminar">
                             <i class="bi bi-trash3-fill"></i>
                         </a>
                     </td>
@@ -112,13 +132,19 @@
                     <td>B</td>
                     <td>$12.000.000,00</td>
                     <td>$1.900.000,00</td>
+                    <td>
+                        <div class="col-12 col-lg-6 mt-lg-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked disabled>
+                            </div>
+                    </td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
+                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Eliminar">
                             <i class="bi bi-trash3-fill"></i>
                         </a>
                     </td>
@@ -129,13 +155,19 @@
                     <td>K</td>
                     <td>$10.750.000,00</td>
                     <td>$2.200.000,00</td>
+                    <td>
+                        <div class="col-12 col-lg-6 mt-lg-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked disabled>
+                            </div>
+                    </td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
+                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Eliminar">
                             <i class="bi bi-trash3-fill"></i>
                         </a>
                     </td>
@@ -146,13 +178,19 @@
                     <td>D</td>
                     <td>$9.600.000,00</td>
                     <td>$1.500.000,00</td>
+                    <td>
+                        <div class="col-12 col-lg-6 mt-lg-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" unchecked disabled>
+                            </div>
+                    </td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
+                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Eliminar">
                             <i class="bi bi-trash3-fill"></i>
                         </a>
                     </td>
@@ -163,13 +201,19 @@
                     <td>A</td>
                     <td>$21.800.000,00</td>
                     <td>$4.100.000,00</td>
+                    <td>
+                        <div class="col-12 col-lg-6 mt-lg-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked disabled>
+                            </div>
+                    </td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
+                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Eliminar">
                             <i class="bi bi-trash3-fill"></i>
                         </a>
                     </td>
@@ -180,13 +224,19 @@
                     <td>I</td>
                     <td>$17.200.000,00</td>
                     <td>$3.000.000,00</td>
+                    <td>
+                        <div class="col-12 col-lg-6 mt-lg-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" unchecked disabled>
+                            </div>
+                    </td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
+                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Eliminar">
                             <i class="bi bi-trash3-fill"></i>
                         </a>
                     </td>
@@ -197,13 +247,19 @@
                     <td>E</td>
                     <td>$13.900.000,00</td>
                     <td>$2.100.000,00</td>
+                    <td>
+                        <div class="col-12 col-lg-6 mt-lg-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked disabled>
+                            </div>
+                    </td>
                 </tr>
                 <tr>
                     <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
+                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
+                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Eliminar">
                             <i class="bi bi-trash3-fill"></i>
                         </a>
                     </td>
@@ -214,177 +270,14 @@
                     <td>G</td>
                     <td>$11.300.000,00</td>
                     <td>$1.700.000,00</td>
-                </tr>
-                @* <tr>
-                    <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
-                            <i class="bi bi-trash3-fill"></i>
-                        </a>
+                    <td>
+                        <div class="col-12 col-lg-6 mt-lg-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" unchecked disabled>
+                            </div>
                     </td>
-                    <td>11</td>
-                    <td>Lucía Fernández</td>
-                    <td>27-23984567-1</td>
-                    <td>Venta de cosas muebles</td>
-                    <td>D</td>
-                    <td>$14.500.000,00</td>
-                    <td>$3.000.000,00</td>
                 </tr>
-                <tr>
-                    <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
-                            <i class="bi bi-trash3-fill"></i>
-                        </a>
-                    </td>
-                    <td>12</td>
-                    <td>Tomás Blanco</td>
-                    <td>20-33445231-0</td>
-                    <td>Locación de servicios</td>
-                    <td>J</td>
-                    <td>$16.300.000,00</td>
-                    <td>$3.400.000,00</td>
-                </tr>
-                <tr>
-                    <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
-                            <i class="bi bi-trash3-fill"></i>
-                        </a>
-                    </td>
-                    <td>13</td>
-                    <td>Paula Díaz</td>
-                    <td>23-77214325-9</td>
-                    <td>Venta de cosas muebles</td>
-                    <td>F</td>
-                    <td>$12.200.000,00</td>
-                    <td>$2.300.000,00</td>
-                </tr>
-                <tr>
-                    <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
-                            <i class="bi bi-trash3-fill"></i>
-                        </a>
-                    </td>
-                    <td>14</td>
-                    <td>Gustavo Herrera</td>
-                    <td>24-11339845-6</td>
-                    <td>Locación de servicios</td>
-                    <td>B</td>
-                    <td>$17.900.000,00</td>
-                    <td>$3.600.000,00</td>
-                </tr>
-                <tr>
-                    <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
-                            <i class="bi bi-trash3-fill"></i>
-                        </a>
-                    </td>
-                    <td>15</td>
-                    <td>Valentina Castro</td>
-                    <td>27-55674321-3</td>
-                    <td>Venta de cosas muebles</td>
-                    <td>A</td>
-                    <td>$19.100.000,00</td>
-                    <td>$3.900.000,00</td>
-                </tr>
-                <tr>
-                    <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
-                            <i class="bi bi-trash3-fill"></i>
-                        </a>
-                    </td>
-                    <td>16</td>
-                    <td>Agustín Ramírez</td>
-                    <td>20-44982173-8</td>
-                    <td>Locación de servicios</td>
-                    <td>H</td>
-                    <td>$11.700.000,00</td>
-                    <td>$2.200.000,00</td>
-                </tr>
-                <tr>
-                    <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
-                            <i class="bi bi-trash3-fill"></i>
-                        </a>
-                    </td>
-                    <td>17</td>
-                    <td>Camila Vega</td>
-                    <td>23-77884569-2</td>
-                    <td>Venta de cosas muebles</td>
-                    <td>K</td>
-                    <td>$10.800.000,00</td>
-                    <td>$1.800.000,00</td>
-                </tr>
-                <tr>
-                    <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
-                            <i class="bi bi-trash3-fill"></i>
-                        </a>
-                    </td>
-                    <td>18</td>
-                    <td>Federico Molina</td>
-                    <td>24-66784312-4</td>
-                    <td>Locación de servicios</td>
-                    <td>E</td>
-                    <td>$13.600.000,00</td>
-                    <td>$2.500.000,00</td>
-                </tr>
-                <tr>
-                    <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
-                            <i class="bi bi-trash3-fill"></i>
-                        </a>
-                    </td>
-                    <td>19</td>
-                    <td>Julieta Romero</td>
-                    <td>27-88821435-5</td>
-                    <td>Venta de cosas muebles</td>
-                    <td>G</td>
-                    <td>$15.200.000,00</td>
-                    <td>$2.700.000,00</td>
-                </tr>
-                <tr>
-                    <td class="g-1">
-                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Profiles/editar">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                        <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Profiles/elimiar">
-                            <i class="bi bi-trash3-fill"></i>
-                        </a>
-                    </td>
-                    <td>20</td>
-                    <td>Matías Herrera</td>
-                    <td>20-33215789-7</td>
-                    <td>Locación de servicios</td>
-                    <td>C</td>
-                    <td>$18.600.000,00</td>
-                    <td>$3.800.000,00</td>
-                </tr> *@
+              
             </tdoby>
         </table>
 
