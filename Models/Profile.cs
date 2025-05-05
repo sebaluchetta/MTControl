@@ -43,6 +43,9 @@ namespace MTControl.Models
         [Required]
         [Column ( TypeName = "money" )]
         public required decimal Compras { get; set; }
+        [Required]
+     
+        public required bool Activo { get; set; }
     }
 
 }

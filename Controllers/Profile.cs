@@ -12,6 +12,10 @@ namespace MTControl.Controllers
         {
             return View();
         }
+        public IActionResult Nuevo()
+        {
+            return View("ProfileCrud");
+        }
 
         public IActionResult Editar ()
         {

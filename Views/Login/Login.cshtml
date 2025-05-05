@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "MTControl Login";
+
+}
+@section NavBarInvisible { }
+@* @section FooterInvisible { } *@
+<div class="col-12   offset-3">
+<div class="row align-items-center mt-3 center">
+        <div class="col-lg-2 col-md-4 align-items-sm-center">
+            <img src="~/img/logo.svg" alt="Logo" class="img-fluid" />
+        </div>
+        <div class="col-lg-10 col-md-8">
+            <h1 class="align-self-center">Bienvenido a MT Control</h1>
+        </div>
+    </div>
+
+</div>
+<form action="/" method="post">
+    <div class="container align-self-lg-center align-items-center">
+
+        <div class="row align-items-center">
+            <div class="col-4 offset-4">
+                <div class="card shadow mt-5">
+                    <div class="card-body">
+                        <div class="row">
+                            <h5>Ingrese usuario y contraseña:</h5>
+                        </div>
+                        <div class="row-cols align-items-center ">
+
+                            <div class=" col-12">
+                                <label for="inputUser" class="form-label">Usuario:</label>
+                                <input type="text" class="form-control" id="inputUser">
+                            </div>
+                        </div>
+                        <div class="row-cols align-items-center">
+
+                            <div class=" col-12">
+                                <label for="inputPass" class="form-label">Contraseña:</label>
+                                <input type="password" class="form-control" id="inputPass">
+                            </div>
+                        </div>
+
+                        <div class="rowa align-content-center pt-5">
+                            <div class="col-12">
+                                <a class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" role="button" Type="submit" title="Ingresar" asp-controller="Home" asp-action="Index">
+                                    <i class="bi bi-box-arrow-in-right ">   <p class=" d-none d-md-inline-flex d-lg-inline-flex"> Ingresar</p></i>
+
+                                    </i>
+                                </a>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>
