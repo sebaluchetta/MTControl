@@ -1,5 +1,6 @@
-﻿<!DOCTYPE html>
-
+﻿
+@model List<Image>
+<!DOCTYPE html>
 <html lang="es-ar">
 <head>
     <meta charset="utf-8" />
@@ -19,7 +20,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-expand-sm   navbar-light bg-light border-bottom box-shadow mb-3 ">
             <div class="container-fluid ">
-                <img src="~/img/logo.svg" alt="Logo" class="img-fluid" />
+                <img src="~/img/logo.svg".src alt="Logo" class="img-fluid" />
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -27,7 +28,7 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1 nav-tabs justify-content-center">
                             <li class="nav-item">
-                                <a class="nav-link text-dark ps-5 ms-5" asp-controller="Home" asp-action="Index">Inicio</a>
+                                <a class="nav-link text-dark ps-5 ms-5" asp-controller="Inicio" asp-action="Index">Inicio</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark ps-5 ms-5" asp-controller="Profile" asp-action="Profiles">Perfiles</a>
@@ -36,12 +37,17 @@
                                 <a class="nav-link text-dark ps-5 ms-5" asp-controller="Report" asp-action="Report">Informes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark ps-5 ms-5" asp-controller="Home" asp-action="Faqs">Ayuda</a>
+                                <a class="nav-link text-dark ps-5 ms-5" asp-controller="Faqs" asp-action="Faqs">Ayuda</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark ps-5 ms-5" asp-controller="Home" asp-action="About">Acerca de</a>
+                                <a class="nav-link text-dark ps-5 ms-5" asp-controller="About" asp-action="About">Acerca de</a>
                             </li>
 
+                        </ul>
+                        <ul class="navbar-nav flex-grow-1 nav-tabs justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark ps-5 ms-5" asp-controller="Login" asp-action="Login">Salir</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -64,9 +70,8 @@
         </main>
     </div>
 
-    @if (!IsSectionDefined("FooterInvisible"))
-    {
-        <footer class="container-fluid py-3  mt-auto  d-lg-block ">
+    @Html.Partial( "_Footer" );
+       @*  <footer class="container-fluid py-3  mt-auto  d-lg-block ">
             <div class="container d-flex flex-wrap justify-content-between align-items-center py-4">
 
 
@@ -74,37 +79,22 @@
                     <img src="~/img/logo.svg" alt="Logo" class="img-fluid" style="height: 40px;" />
                     <h2 class="h5 mb-0">Tech Para Contadores</h2>
                 </div>
-
-
                 <div class=" col d-flex align-items-center gap-3 flex-wrap justify-content-center text-center">
                     <h2 class="h6 mb-0">Contacto:</h2>
-                    <a href="https://www.facebook.com/tpc">
-                        <img src="~/img/facebook.svg" alt="Facebook" class="img-fluid" style="height: 24px;" />
-                    </a>
-                    <a href="https://www.twitter.com/tpc">
-                        <img src="~/img/x.svg" alt="X" class="img-fluid" style="height: 24px;" />
-                    </a>
-                    <a href="https://whatapp">
-                        <img src="~/img/whastapp.svg" alt="WhatsApp" class="img-fluid" style="height: 24px;" />
-                    </a>
-                    <a href="https://www.instagram.com/tpc">
-                        <img src="~/img/instagram.svg" alt="Instagram" class="img-fluid" style="height: 24px;" />
-                    </a>
-                    <a href="mailto:tpc@gmail.com">
-                        <img src="~/img/mail.svg" alt="Email" class="img-fluid" style="height: 24px;" />
-                    </a>
+                    @foreach (Image image in Model)
+                    {
+                        <a href="@image.url">
+                            <img src="@image.src" alt="@image.alt" class="img-fluid" />
+                        </a>
+                    }
                 </div>
             </div>
 
             <div class="text-center pb-3">
                 <h6 class="mb-0">© 2025 Reservados todos los derechos</h6>
             </div>
-        </footer>
-    }
-    else
-    {
-        @RenderSection("FooterInvisible", false)
-    }
+        </footer> *@
+   
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

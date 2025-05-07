@@ -1,16 +1,13 @@
 using System.Diagnostics;
-
-
-
 using Microsoft.AspNetCore.Mvc;
 using MTControl.Models;
 
 namespace MTControl.Controllers
 {
-    public class LoginController : Controller
+    public class InicioController : Controller
     {
-        private List<Image> _imgFooter = new ();
-        public LoginController ()
+        private List<Image> _imgFooter = new List<Image> ();
+        public InicioController ()
         {
             _imgFooter.Add ( new Image { src = "/img/facebook.svg", url = "https://www.facebook.com/MTC", alt = "Facebook" } );
             _imgFooter.Add ( new Image { src = "/img/x.svg", url = "https://www.x.com/MTC", alt = "X" } );
@@ -20,12 +17,12 @@ namespace MTControl.Controllers
 
         }
 
-        public IActionResult Login()
+        public IActionResult Index()
         {
-       
-          
-            return View ( _imgFooter );
+            return View(_imgFooter);
         }
-       
+        
+
     }
 }
+
