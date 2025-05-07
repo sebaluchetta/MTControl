@@ -1,0 +1,25 @@
+﻿@model List<Image>
+    <footer class="container-fluid py-3  mt-auto  d-lg-block ">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center py-4">
+
+
+            <div class=" col d-lg-inline-flex d-md-flex align-items-center gap-3">
+                <img src="~/img/logo.svg" alt="Logo" class="img-fluid" style="height: 40px;" />
+                <h2 class="h5 mb-0">Tech Para Contadores</h2>
+            </div>
+            <div class=" col d-flex align-items-center gap-3 flex-wrap justify-content-center text-center">
+                <h2 class="h6 mb-0">Contacto:</h2>
+                @foreach (Image image in Model)
+                {
+                    <a href="@image.url">
+                        <img src="@image.src" alt="@image.alt" class="img-fluid" />
+                    </a>
+                }
+            </div>
+        </div>
+
+        <div class="text-center pb-3">
+            <h6 class="mb-0">© 2025 Reservados todos los derechos</h6>
+        </div>
+    </footer>
+}

@@ -1,16 +1,14 @@
 using System.Diagnostics;
-
-
-
 using Microsoft.AspNetCore.Mvc;
 using MTControl.Models;
 
 namespace MTControl.Controllers
 {
-    public class LoginController : Controller
+    public class FaqsController : Controller
     {
+
         private List<Image> _imgFooter = new ();
-        public LoginController ()
+        public FaqsController ()
         {
             _imgFooter.Add ( new Image { src = "/img/facebook.svg", url = "https://www.facebook.com/MTC", alt = "Facebook" } );
             _imgFooter.Add ( new Image { src = "/img/x.svg", url = "https://www.x.com/MTC", alt = "X" } );
@@ -19,13 +17,10 @@ namespace MTControl.Controllers
             _imgFooter.Add ( new Image { src = "/img/mail.svg", url = "mailto:mtc@yopmail.com", alt = "Email" } );
 
         }
-
-        public IActionResult Login()
+        public IActionResult Faqs ()
         {
-       
-          
-            return View ( _imgFooter );
+            return View (_imgFooter);
+
         }
-       
     }
 }
