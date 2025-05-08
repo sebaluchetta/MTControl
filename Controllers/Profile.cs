@@ -16,7 +16,7 @@ namespace MTControl.Controllers
             _imgFooter.Add ( new Image { src = "/img/mail.svg", url = "mailto:mtc@yopmail.com", alt = "Email" } );
 
         }
-
+        
         public IActionResult Profiles()
         {
             return View(_imgFooter);
@@ -24,6 +24,11 @@ namespace MTControl.Controllers
         public IActionResult Nuevo()
         {
             return View("ProfileCrud",_imgFooter);
+        }
+        [HttpPost]
+        public IActionResult Guardar()
+        {
+            return View("Profiles", _imgFooter);
         }
 
         public IActionResult Editar ()
