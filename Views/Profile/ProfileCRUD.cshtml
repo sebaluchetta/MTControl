@@ -1,7 +1,13 @@
 ﻿@{
-    ViewData [ "Title" ] = "ABM PERFILES";
+    ViewData["Title"] = "ABM PERFILES";
 }
-<form action="/" method="post">
+<form action="Guardar" method="post" id="NuevoPerfilForm">
+    <div class="container-fluid">
+        <div class="row align-items-lg-end">
+            <div class="col-6 offset-6" id="PlaceHolderAlert">
+            </div>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="container-fluid">
             <div class=" col-12 col-lg-6 ">
@@ -60,27 +66,18 @@
             </div>
             <div class="row row-cols-auto g-4 mt-3 ">
                 <div class="col">
-                    <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" Type="submit" title="Guardar Perfil" asp-controller="Profile" asp-action="Profiles">
+                    <button type="button" class="btn btn-outline-success" id="BtnGuardar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Guardar Perfil">
                         <i class="bi bi-floppy2-fill"></i>
                         <p class="d-none d-md-block d-lg-inline"> Guardar</p>
-                        </i>
-                    </a>
-                </div>
-
-                <div class="col">
-                    <a class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Volver a la Perfiles" asp-controller="Profile" asp-action="Profiles">
-                        <i class="bi bi-box-arrow-in-left"></i>
-
-                        <p class="d-none d-md-block d-lg-inline"> Cancelar</p>
-                        </i>
-                    </a>
+                    </button>
 
                 </div>
             </div>
-
-
-
         </div>
+
+
+
     </div>
+
 
 </form>
