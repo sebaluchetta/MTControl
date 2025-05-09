@@ -16,10 +16,11 @@ namespace MTControl.Controllers
             _imgFooter.Add ( new Image { src = "/img/whastapp.svg", url = "https://wa.link/MTcontrol", alt = "Whatsapp" } );
             _imgFooter.Add ( new Image { src = "/img/instagram.svg", url = "https://www.instagram.com/MTC", alt = "Instagram" } );
             _imgFooter.Add ( new Image { src = "/img/mail.svg", url = "mailto:mtc@yopmail.com", alt = "Email" } );
-
         }
         public IActionResult About()
         {
+            ViewData["ImgFooter"] = _imgFooter;
+
             return View( _imgFooter );
         }
 

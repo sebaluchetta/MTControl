@@ -7,14 +7,12 @@ namespace MTControl.Models
 
     public class CalculationParameters
     {
-        [NotMapped]
-        public List<Category> ListaCategorias { get; set; } = new ();
+       
+        public List<Category> ListaCategorias { get; set; } 
 
-        [NotMapped]
-        public List<MTActivity> ListaActividades { get; set; } = new ();
+        
+        public List<MTActivity> ListaActividades { get; set; } 
 
-        [NotMapped]
-        [Column ( TypeName = "money" )]
         public decimal IIBBCategoriaMaxima
         {
             get
