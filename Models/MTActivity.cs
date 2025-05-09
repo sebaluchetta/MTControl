@@ -7,15 +7,13 @@ namespace MTControl.Models
 
     public class MTActivity
     {
-        [Key]
+      
         public int Id { get; set; }
 
-        [Required]
-        [MaxLength ( 200 )]
-        public required string Descripcion { get; set; }
+       
+        public  string Descripcion { get; set; }
 
-        [Required]
-        [Range ( 0, 1 )]
-        public required decimal PorcentajeComprasVentas { get; set; }
+      
+        public  decimal PorcentajeComprasVentas { get; set; }
     }
 }

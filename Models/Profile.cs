@@ -7,45 +7,33 @@ namespace MTControl.Models
 
     public class Profile
     {
-        [Key]
+       
         public int Codigo { get; set; }
 
-        [Required]
-        [MaxLength ( 200 )]
-        public required string RazonSocial { get; set; }
+        
+        public  string RazonSocial { get; set; }
 
-        [Required]
-        [MaxLength ( 20 )]
-        public  required string Cuit { get; set; }
+        
+        public   string Cuit { get; set; }
 
-        [Required]
-        public int CategoriaId { get; set; }
+        
+        public  string Categoria { get; set; }
 
-        [Required]
-        [ForeignKey ( nameof ( CategoriaId ) )]
-        public required Category Categoria { get; set; }
-
-        [Required]
-        public int MTActivityId { get; set; }
-
-        [Required]
-        [ForeignKey ( nameof ( MTActivityId ) )]
-        public required MTActivity Actividad { get; set; }
+        
+        public  string Actividad { get; set; }
 
        
-        [Required]
-        public required DateTime FechaInicioActividades { get; set; }
+        
+        public  DateTime FechaInicioActividades { get; set; }
 
-        [Required]
-        [Column ( TypeName = "money" )]
-        public required decimal Iibb { get; set; }
+        
+        public  decimal Iibb { get; set; }
 
-        [Required]
-        [Column ( TypeName = "money" )]
-        public required decimal Compras { get; set; }
-        [Required]
+        
+        public  decimal Compras { get; set; }
+        
      
-        public required bool Activo { get; set; }
+        public  bool Activo { get; set; }
     }
 
 }

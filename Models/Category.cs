@@ -7,17 +7,16 @@ namespace MTControl.Models
 
     public class Category
     {
-        [Key]
+      
         public int Id { get; set; }
 
-        [Required]
-        [MaxLength ( 5 )]
+      
         public Char Letra { get; set; }
 
-        [Column ( TypeName = "money" )]
+      
         public decimal IngresosBrutosCategoria { get; set; }
 
-        [Column ( TypeName = "money" )]
+      
         public decimal PrecioMaximoUnitario { get; set; }
 
         public bool UltimaCategoria { get; set; }
