@@ -18,7 +18,7 @@ namespace MTControl.Controllers
         }
         public IActionResult Faqs ()
         {
-            ViewData["ImgFooter"] = _imgFooter;
+            TempData["ImgFooter"] = _imgFooter;
             return View (_imgFooter);
 
         }

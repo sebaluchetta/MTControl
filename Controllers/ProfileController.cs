@@ -56,42 +56,50 @@ namespace MTControl.Controllers
                 Activo = false
             });
            
-
         }
 
         public IActionResult Profiles()
         {
-            ViewData["ImgFooter"] = _imgFooter;
-            ViewData["Perfiles"] = _perfiles;
+            TempData["ImgFooter"] = _imgFooter;
+            TempData["Perfiles"] = _perfiles;
             return View();
         }
         public IActionResult Nuevo()
         {
-            ViewData["ImgFooter"] = _imgFooter;
+            TempData["ImgFooter"] = _imgFooter;
             return View("ProfileCrud");
         }
         [HttpPost]
-        public IActionResult Guardar()
+        public IActionResult Guardar(Profile perfil)
         {
-            ViewData["Perfiles"] = _perfiles;
-            ViewData["ImgFooter"] = _imgFooter;
+            perfil = NuevoPerfil ( perfil );
+            _perfiles.Add ( perfil );
+            TempData ["Perfiles"] = _perfiles;
+            TempData["ImgFooter"] = _imgFooter;
+            TempData [ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} guardado correctamente";  
             return View("Profiles");
         }
 
         public IActionResult Editar()
         {
-
-
-            ViewData["ImgFooter"] = _imgFooter;
+            TempData["ImgFooter"] = _imgFooter;
             return View("ProfileCrud");
         }
         public IActionResult Eliminar()
         {
-            ViewData["ImgFooter"] = _imgFooter;
-            ViewData["Perfiles"] = _perfiles;
+            TempData["ImgFooter"] = _imgFooter;
+            TempData["Perfiles"] = _perfiles;
             return View("Profiles");
         }
+        #region Metodos Privados    
+        private Profile NuevoPerfil ( Profile perfil)
+        {
+            perfil.Codigo = Math.Min(_perfiles.Max (p => p.Codigo ) + 1, 1000 );
+            perfil.Activo = true;
+            return perfil;
+        }
 
+        #endregion
     }
 
 

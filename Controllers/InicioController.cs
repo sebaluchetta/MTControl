@@ -19,7 +19,7 @@ namespace MTControl.Controllers
 
         public IActionResult Index()
         {
-            ViewData["ImgFooter"] = _imgFooter;
+            TempData["ImgFooter"] = _imgFooter;
             return View(_imgFooter);
         }
         
