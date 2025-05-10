@@ -23,13 +23,13 @@ namespace MTControl.Controllers
         public IActionResult Login()
         {
 
-            ViewData["ImgFooter"] = _imgFooter;
+            TempData["ImgFooter"] = _imgFooter;
             return View ();
         }
         public IActionResult Logout()
         {
 
-            ViewData["ImgFooter"] = _imgFooter;
+            TempData["ImgFooter"] = _imgFooter;
             return View();
         }
 

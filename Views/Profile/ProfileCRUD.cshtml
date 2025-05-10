@@ -1,34 +1,30 @@
 ﻿
 <form action="Guardar" method="post" id="NuevoPerfilForm">
-   
-    
+
+
     @*Placeholder para el alert*@   
-    
-    <div class="container-fluid">
-        <div class="row align-items-lg-end">
-            <div class="col-6 offset-6" id="PlaceHolderAlert">
-            </div>
-        </div>
-    </div>
+
+
     <div class="container-fluid">
         <div class="container-fluid">
+
             <div class=" col-12 col-lg-6 ">
                 <label for="inputRazonSocial" class="form-label">Razón Social</label>
-                <input type="text" class="form-control" id="inputRazonSocial">
+                <input type="text" class="form-control" id="inputRazonSocial" name="RazonSocial">
             </div>
             <div class="col-12 col-lg-6 mt-lg-3">
                 <label for="inputCUIT" class="form-label">CUIT</label>
-                <input type="number" class="form-control" id="inputCUIT">
+                <input type="number" class="form-control" id="inputCUIT" name="Cuit">
             </div>
             <div class="col-12 col-lg-6 mt-lg-3">
                 <label for="inputFiActividades" class="form-label">Fecha inicio de actividades</label>
-                <input type="date" class="form-control" id="inputFiActividades">
+                <input type="date" class="form-control" id="inputFiActividades" name="FechaInicioActividades">
             </div>
 
 
             <div class="col-12 col-lg-6 mt-lg-3">
                 <label for="inputCategoria" class="form-label">Categoria</label>
-                <select id="inputCategoria" class="form-select">
+                <select id="inputCategoria" class="form-select" name="Categoria">
                     <option selected disabled>Seleccione una categoria</option>
                     <option value="A">A</option>
                     <option value="B">B</option>
@@ -45,30 +41,30 @@
             </div>
             <div class="col-12 col-lg-6 mt-lg-3">
                 <label for="inputActividad" class="form-label">Actividad Principal</label>
-                <select id="inputCategoria" class="form-select">
+                <select id="inputCategoria" class="form-select" name="Actividad">
                     <option selected disabled>Seleccione una actividad</option>
-                    <option value="1">Venta de cosas muebles</option>
-                    <option value="2">Locación de servicios</option>
+                    <option value="Venta de cosas muebles">Venta de cosas muebles</option>
+                    <option value="Locación de servicios">Locación de servicios</option>
 
                 </select>
             </div>
             <div class="col-12 col-lg-6 mt-lg-3">
                 <label for="inputIIBB" class="form-label">Ingresos brutos totales últimos 12 meses</label>
-                <input type="number" class="form-control" id="inputIIBB">
+                <input type="number" class="form-control" id="inputIIBB" name="Iibb">
             </div>
             <div class="col-12 col-lg-6 mt-lg-3">
                 <label for="inputCompras" class="form-label">Compras totales últimos 12 meses</label>
-                <input type="number" class="form-control" id="inputCompras">
+                <input type="number" class="form-control" id="inputCompras" name="Compras">
             </div>
             <div class="col-12 col-lg-6 mt-lg-3">
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked>
+                    <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked name="Activo" />
                     <label class="form-check-label" for="ToggleActivo">Activo</label>
                 </div>
             </div>
             <div class="row row-cols-auto g-4 mt-3 ">
                 <div class="col">
-                    <button type="button" class="btn btn-outline-success" id="BtnGuardar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Guardar Perfil">
+                    <button type="submit" class="btn btn-outline-success" id="BtnGuardar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Guardar Perfil">
                         <i class="bi bi-floppy2-fill"></i>
                         <p class="d-none d-md-block d-lg-inline"> Guardar</p>
                     </button>
