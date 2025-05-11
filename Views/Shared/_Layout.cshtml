@@ -20,7 +20,7 @@
                 @if (!IsSectionDefined("NavBarInvisible"))
                 {
     <header>
-        <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-expand-sm   navbar-light bg-light border-bottom box-shadow mb-3 ">
+        <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-expand-sm   navbar-light  mb-3 ">
             <div class="container-fluid ">
                 <img src="~/img/logo.svg".src alt="Logo" class="img-fluid" />
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -42,7 +42,7 @@
                                 <a class="nav-link text-dark ps-5 ms-5" asp-controller="Faqs" asp-action="Faqs">Ayuda</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark ps-5 ms-5" asp-controller="About" asp-action="About">Acerca de</a>
+                                <a class="nav-link text-dark ps-5 ms-5" asp-controller="About" asp-action="About">Nosotros</a>
                             </li>
 
                         </ul>
@@ -78,7 +78,7 @@
                 <img src="~/img/logo.svg" alt="Logo" class="img-fluid" style="height: 40px;" />
                 <h2 class="h5 mb-0">Tech Para Contadores</h2>
             </div>
-
+            @*Contacto para pantallas >= md*@
             <div class=" col d-flex align-items-center gap-3 flex-wrap justify-content-center text-center d-none d-md-flex d-lg-flex d-xl-flex d-xxl-flex">
                 <h2 class="h6 mb-0">Contacto:</h2>
                 @foreach (Image image in imgFooter)
@@ -88,6 +88,7 @@
                     </a>
                 }
             </div>
+            @*Contacto para pantallas < md*@
             <div class=" col d-flex align-items-center gap-3 flex-wrap justify-content-center text-center d-sm-flex d-flex d-md-none d-lg-none d-xl-none d-xxl-none">
                 <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseContacto" aria-expanded="false" aria-controls="collapseContacto">
                     Contacto
