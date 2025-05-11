@@ -74,9 +74,9 @@ namespace MTControl.Controllers
         {
             perfil = NuevoPerfil ( perfil );
             _perfiles.Add ( perfil );
-            TempData ["Perfiles"] = _perfiles;
+            TempData["Perfiles"] = _perfiles;
             TempData["ImgFooter"] = _imgFooter;
-            TempData [ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} guardado correctamente";  
+            TempData[ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} fue guardado correctamente";  
             return View("Profiles");
         }
 
