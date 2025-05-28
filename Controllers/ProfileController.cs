@@ -3,6 +3,8 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 using MTControl.Models;
+using MTControl.Services;
+using MTControl.Services.Interface;
 
 namespace MTControl.Controllers
 {
@@ -10,63 +12,34 @@ namespace MTControl.Controllers
     {
         private List<Image> _imgFooter = new();
         private List<Profile> _perfiles = new();
-      
+        private readonly MtcontrolContext _DBcontext;
+        private readonly IImageService _imageService;
 
-        public ProfileController()
+
+
+        public ProfileController ( MtcontrolContext _context )
         {
-            _imgFooter.Add(new Image { src = "/img/facebook.svg", url = "https://www.facebook.com/MTC", alt = "Facebook" });
-            _imgFooter.Add(new Image { src = "/img/x.svg", url = "https://www.x.com/MTC", alt = "X" });
-            _imgFooter.Add(new Image { src = "/img/whastapp.svg", url = "https://wa.link/MTcontrol", alt = "Whatsapp" });
-            _imgFooter.Add(new Image { src = "/img/instagram.svg", url = "https://www.instagram.com/MTC", alt = "Instagram" });
-            _imgFooter.Add(new Image { src = "/img/mail.svg", url = "mailto:mtc@yopmail.com", alt = "Email" });
-            _perfiles.Add(new Profile
-              {
-                  Codigo = 1,
-                  RazonSocial = "Juan Subira",
-                  Cuit = "20-32113739-4",
-                  Categoria = "A",
-                  Actividad = "Venta de cosas muebles",
-                  FechaInicioActividades = new DateTime(2000, 12, 01),
-                  Iibb = 20000000.00m,
-                  Compras = 4000000.00m,
-                  Activo = true
-              });
-            _perfiles.Add(new Profile
-            {
-                Codigo = 2,
-                RazonSocial = "María Torres",
-                Cuit = "27-28563214-8",
-                Categoria = "C",
-                Actividad = "Locación de servicios",
-                FechaInicioActividades = new DateTime(2018, 10, 01),
-                Iibb = 15500000.00m,
-                Compras = 2750000.00m,
-                Activo = true
-            });
-            _perfiles.Add(new Profile
-            {
-                Codigo = 3,
-                RazonSocial = "Carlos Méndez",
-                Cuit = "23-33456789-0",
-                Categoria = "H",
-                Actividad = "Venta de cosas muebles",
-                FechaInicioActividades = new DateTime(2020, 02, 01),
-                Iibb = 18200000.00m,
-                Compras = 3600000.00m,
-                Activo = false
-            });
-           
+            _DBcontext = _context;
+            _imageService = new ImageService ( _context );
         }
 
         public IActionResult Profiles()
         {
-            TempData["ImgFooter"] = _imgFooter;
+            _imgFooter = CargarImagenes ();
+            _perfiles = CargarPerfiles ();
+            TempData ["ImgFooter"] = _imgFooter;
             TempData["Perfiles"] = _perfiles;
             return View();
         }
+
+        private List<Profile> CargarPerfiles ()
+        {
+            return _DBcontext.Profiles.ToList ();    
+        }
+
         public IActionResult Nuevo()
         {
-            TempData["ImgFooter"] = _imgFooter;
+            TempData["ImgFooter"] = CargarImagenes();
             return View("ProfileCrud");
         }
         [HttpPost]
@@ -75,19 +48,19 @@ namespace MTControl.Controllers
             perfil = NuevoPerfil ( perfil );
             _perfiles.Add ( perfil );
             TempData["Perfiles"] = _perfiles;
-            TempData["ImgFooter"] = _imgFooter;
+            TempData["ImgFooter"] = CargarImagenes ();
             TempData[ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} fue guardado correctamente";  
             return View("Profiles");
         }
 
         public IActionResult Editar()
         {
-            TempData["ImgFooter"] = _imgFooter;
+            TempData["ImgFooter"] = CargarImagenes ()  ;
             return View("ProfileCrud");
         }
         public IActionResult Eliminar()
         {
-            TempData["ImgFooter"] = _imgFooter;
+            TempData["ImgFooter"] = CargarImagenes ();
             TempData["Perfiles"] = _perfiles;
             return View("Profiles");
         }
@@ -97,6 +70,10 @@ namespace MTControl.Controllers
             perfil.Codigo = Math.Min(_perfiles.Max (p => p.Codigo ) + 1, 1000 );
             perfil.Activo = true;
             return perfil;
+        }
+        private List<Image> CargarImagenes ()
+        {
+            return _imageService.GetImages ();
         }
 
         #endregion

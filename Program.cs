@@ -1,7 +1,14 @@
+using MTControl.Models;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<MtcontrolContext> ( options =>
+options.UseSqlServer ( builder.Configuration.GetConnectionString ( "ConexionSQL" ) )
+
+);
+builder.Services.AddScoped<MTControl.Services.Interface.IImageService, MTControl.Services.ImageService> (); 
 
 var app = builder.Build();
 

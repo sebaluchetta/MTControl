@@ -1,39 +1,25 @@
-﻿    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-namespace MTControl.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace MTControl.Models;
+
+public partial class Profile
 {
+    public int Codigo { get; set; }
 
-    public class Profile
-    {
-       
-        public int Codigo { get; set; }
+    public string RazonSocial { get; set; } = null!;
 
-        
-        public  string RazonSocial { get; set; }
+    public long Cuit { get; set; }
 
-        
-        public   string Cuit { get; set; }
+    public int Categoria { get; set; }
 
-        
-        public  string Categoria { get; set; }
+    public int Actividad { get; set; }
 
-        
-        public  string Actividad { get; set; }
+    public DateOnly FechaInicioActividades { get; set; }
 
-       
-        
-        public  DateTime FechaInicioActividades { get; set; }
+    public decimal Iibb { get; set; }
 
-        
-        public  decimal Iibb { get; set; }
+    public decimal Compras { get; set; }
 
-        
-        public  decimal Compras { get; set; }
-        
-     
-        public  bool Activo { get; set; }
-    }
-
+    public bool Activo { get; set; }
 }
