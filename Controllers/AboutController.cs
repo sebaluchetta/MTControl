@@ -11,27 +11,24 @@ namespace MTControl.Controllers
     public class AboutController : Controller
     {
         private List<Image> _imgFooter = new ();
-        private readonly MtcontrolContext _DBcontext;
+      
         private readonly IImageService _imageService;
 
 
 
         public AboutController ( MtcontrolContext _context )
         {
-            _DBcontext = _context;
+           
             _imageService = new ImageService ( _context );
         }
       
         public IActionResult About()
         {
-            _imgFooter = CargarImagenes ();
-            TempData [ "ImgFooter" ] = _imgFooter;
-            return View ();
+            _imgFooter = _imageService.GetImages ();
+           
+            return View (_imgFooter);
         }
-        private List<Image> CargarImagenes ()
-        {
-            return _imageService.GetImages ();
-        }
+      
 
 
     }

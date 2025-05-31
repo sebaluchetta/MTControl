@@ -10,10 +10,11 @@ namespace MTControl.Controllers
 {
     public class ProfileController : Controller
     {
-        private List<Image> _imgFooter = new();
-        private List<Profile> _perfiles = new();
+        private List<Image> _imgFooter = new ();
+        private List<Profile> _perfiles = new ();
         private readonly MtcontrolContext _DBcontext;
         private readonly IImageService _imageService;
+        private readonly IProfilesService _profilesService;
 
 
 
@@ -21,62 +22,92 @@ namespace MTControl.Controllers
         {
             _DBcontext = _context;
             _imageService = new ImageService ( _context );
+            _profilesService = new ProfileService ( _context );
         }
 
-        public IActionResult Profiles()
+        /// <summary>
+        /// Carga la grilla de Perfiles
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Profiles ()
         {
-            _imgFooter = CargarImagenes ();
-            _perfiles = CargarPerfiles ();
-            TempData ["ImgFooter"] = _imgFooter;
-            TempData["Perfiles"] = _perfiles;
-            return View();
+            _imgFooter = _imageService.GetImages ();
+            _perfiles = _profilesService.GetProfiles ();
+
+            TempData [ "Perfiles" ] = _perfiles;
+            return View ( _imgFooter );
         }
 
-        private List<Profile> CargarPerfiles ()
+        /// <summary>
+        /// Crea un nuevo perfil y lo guarda en la base de datos.
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Nuevo ()
         {
-            return _DBcontext.Profiles.ToList ();    
-        }
+            _imgFooter = _imageService.GetImages ();
 
-        public IActionResult Nuevo()
+            return View ( "ProfileCR", _imgFooter );
+        }
+        /// <summary>
+        /// Guarda un perfil nuevo en la base de datos.
+        /// </summary>
+        /// <param name="perfil"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult Guardar ( Profile perfil )
         {
-            TempData["ImgFooter"] = CargarImagenes();
-            return View("ProfileCrud");
+            if (perfil.Codigo != 0)
+            {
+                _profilesService.UpdateProfile ( perfil );
+                TempData [ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} fue actualizado correctamente";
+                return RedirectToAction ( "Profiles", "Profile" );
+            }
+            perfil = _profilesService.CreateProfile ( perfil );
+            TempData [ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} fue guardado correctamente";
+            return RedirectToAction ( "Profiles", "Profile" );
+        }
+        /// <summary>
+        /// Edita un perfil existente y lo carga en la vista de edición.
+        /// </summary>
+        /// <param name="Codigo"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult Editar ( int Codigo )
+        {
+            _imgFooter = _imageService.GetImages ();
+
+            if (Codigo != 0)
+            {
+                Profile _profile = new Profile ();
+                _profile = _profilesService.GetProfileById ( Codigo );
+                TempData [ "Profile" ] = _profile;
+                return View ( "ProfileU", _imgFooter );
+            }
+            return RedirectToAction ( "Profiles", "Profiles" );
+
         }
         [HttpPost]
-        public IActionResult Guardar(Profile perfil)
+        public IActionResult Consultar ( int Codigo )
         {
-            perfil = NuevoPerfil ( perfil );
-            _perfiles.Add ( perfil );
-            TempData["Perfiles"] = _perfiles;
-            TempData["ImgFooter"] = CargarImagenes ();
-            TempData[ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} fue guardado correctamente";  
-            return View("Profiles");
+
+            if (Codigo != 0)
+            {
+                _imgFooter = _imageService.GetImages ();
+                Profile _profile = new Profile ();
+                _profile = _profilesService.GetProfileById ( Codigo );
+                TempData [ "Profile" ] = _profile;
+                return View ( "ProfileV", _imgFooter );
+            }
+            return RedirectToAction ( "Profiles", "Profiles" );
         }
 
-        public IActionResult Editar()
+        public IActionResult Eliminar ( int Codigo )
         {
-            TempData["ImgFooter"] = CargarImagenes ()  ;
-            return View("ProfileCrud");
+            _imgFooter = _imageService.GetImages ();
+            _profilesService.DeleteProfile ( Codigo );
+            return View ( "Profiles",_imgFooter);
         }
-        public IActionResult Eliminar()
-        {
-            TempData["ImgFooter"] = CargarImagenes ();
-            TempData["Perfiles"] = _perfiles;
-            return View("Profiles");
-        }
-        #region Metodos Privados    
-        private Profile NuevoPerfil ( Profile perfil)
-        {
-            perfil.Codigo = Math.Min(_perfiles.Max (p => p.Codigo ) + 1, 1000 );
-            perfil.Activo = true;
-            return perfil;
-        }
-        private List<Image> CargarImagenes ()
-        {
-            return _imageService.GetImages ();
-        }
-
-        #endregion
+      
     }
 
 

@@ -14,31 +14,26 @@ namespace MTControl.Controllers
     public class LoginController : Controller
     {
         private List<Image> _imgFooter = new ();
-        private readonly MtcontrolContext _DBcontext;
+       
         private readonly IImageService _imageService;
         public LoginController ( MtcontrolContext _context )
         {
-            _DBcontext = _context;
+           
             _imageService = new ImageService ( _context );
         }
 
         public IActionResult Login()
         {
-
-            _imgFooter = CargarImagenes ();
-            TempData [ "ImgFooter" ] = _imgFooter;
-            return View ();
+            _imgFooter = _imageService.GetImages ();
+           
+            return View (_imgFooter);
         }
         public IActionResult Logout()
         {
-
-            _imgFooter = CargarImagenes ();
-            TempData [ "ImgFooter" ] = _imgFooter;
-            return View ();
+            _imgFooter = _imageService.GetImages ();
+         
+            return View (_imgFooter);
         }
-        private List<Image> CargarImagenes ()
-        {
-            return _imageService.GetImages ();
-        }
+       
     }
 }

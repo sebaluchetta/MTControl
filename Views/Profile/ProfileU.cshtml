@@ -1,0 +1,82 @@
+﻿@{
+    Profile profile = TempData [ "Profile" ] as Profile;
+}
+<h1 class="text-center mb-5 text-decoration-underline">Editar Perfil</h1>
+<form action="Guardar" method="post" id="EditarPerfilForm">
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <input type="text" class="form-control" id="inputCodigo" name="Codigo" hidden value="@profile.Codigo">
+
+            <div class=" col-12 col-lg-6 ">
+                <label for="inputRazonSocial" class="form-label">Razón Social</label>
+                <input type="text" class="form-control" id="inputRazonSocial" name="RazonSocial" value="@profile.RazonSocial">
+            </div>
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <label for="inputCUIT" class="form-label">CUIT</label>
+                <input type="number" class="form-control" id="inputCUIT" name="Cuit" value="@profile.Cuit">
+            </div>
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <label for="inputFiActividades" class="form-label">Fecha inicio de actividades</label>
+                <input type="date" class="form-control" id="inputFiActividades" name="FechaInicioActividades" value="@profile.FechaInicioActividades.ToShortDateString()">
+            </div>
+
+
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <label for="inputCategoria" class="form-label">Categoria</label>
+                <select id="inputCategoria" class="form-select" name="Categoria">
+                    <option selected disabled>Seleccione una categoria</option>
+                    <option value="1">A</option>
+                    <option value="2">B</option>
+                    <option value="3">C</option>
+                    <option value="4">D</option>
+                    <option value="5">E</option>
+                    <option value="6">F</option>
+                    <option value="7">G</option>
+                    <option value="8">H</option>
+                    <option value="9">I</option>
+                    <option value="10">J</option>
+                    <option value="11">K</option>
+                </select>
+            </div>
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <label for="inputActividad" class="form-label">Actividad Principal</label>
+                <select id="inputCategoria" class="form-select" name="Actividad">
+                    <option selected disabled>Seleccione una actividad</option>
+                    <option  value="1">Venta de cosas muebles</option>
+                    <option value="2">Locación de servicios</option>
+
+                </select>
+            </div>
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <label for="inputIIBB" class="form-label">Ingresos brutos totales últimos 12 meses</label>
+                <input type="number" class="form-control" id="inputIIBB" name="Iibb" value="@profile.Iibb">
+            </div>
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <label for="inputCompras" class="form-label">Compras totales últimos 12 meses</label>
+                <input type="number" class="form-control" id="inputCompras" name="Compras" value="@profile.Compras">
+            </div>
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked name="Activo" />
+                    <label class="form-check-label" for="ToggleActivo">Activo</label>
+                </div>
+            </div>
+            <div class="row row-cols-auto g-4 mt-3 ">
+                <div class="col-4">
+                    <button type="submit" class="btn btn-outline-success" id="BtnGuardar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Guardar Perfil">
+                        <i class="bi bi-floppy2-fill"></i>
+                        <p class="d-none d-md-block d-lg-inline"> Guardar</p>
+                    </button>
+                    <button type="button" class="btn btn-outline-dark" id="BtnCancelar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Cancelar" onclick="history.back()">
+                        <i class="bi bi-box-arrow-left"></i>
+                        <p class="d-none d-md-block d-lg-inline"> Cancelar</p>
+                    </button>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</form>
