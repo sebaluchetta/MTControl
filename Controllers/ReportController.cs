@@ -21,14 +21,11 @@ namespace MTControl.Controllers
 
         public IActionResult Report()
         {
-            _imgFooter = CargarImagenes ();
-            TempData [ "ImgFooter" ] = _imgFooter;
-            return View ();
+            _imgFooter = _imageService.GetImages ();
+         
+            return View (_imgFooter);
         }
 
-        private List<Image> CargarImagenes ()
-        {
-            return _imageService.GetImages ();
-        }
+      
     }
 }

@@ -39,7 +39,7 @@
             </div>
             <div class="col">
                 <a class="btn btn-outline-dark disabled" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="Profile" asp-action="ExpPDF">
-                    <i class="bi bi-file-earmark-pdf-fill" >
+                    <i class="bi bi-file-earmark-pdf-fill">
 
                         <p class="d-none d-md-block d-lg-inline">Exportar a PDF</p>
                     </i>
@@ -61,17 +61,33 @@
             <th>Compras Umos 12 meses</th>
             <th>Activo</th>
             <tdoby>
+                @if(Perfiles is not null)
+                {
+                    
                 @foreach (Profile pro in Perfiles)
                 {
                     <tr>
                         <td class="g-1">
-                            <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="Editar">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar perfil" asp-controller="Profile" asp-action="Elimiar">
+                            <form asp-controller="Profile" asp-action="Editar" method="post" class="d-inline">
+                                <input type="hidden" name="Codigo" value="@pro.Codigo" />
+                                <button type="submit" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar perfil">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                            </form>
+                            <form asp-controller="Profile" asp-action="Consultar" method="post" class="d-inline">
+                                <input type="hidden" name="Codigo" value="@pro.Codigo" />
+                                <button type="submit" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar perfil">
+                                    <i class="bi bi-eye-fill"></i>
+                                </button>
+                            </form>
+                            <form asp-controller="Profile" asp-action="Eliminar" method="post" class="d-inline">
+                                <input type="hidden" name="Codigo" value="@pro.Codigo" />
+                                <button type="submit" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar perfil">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </button>
+                            </form>
 
-                                <i class="bi bi-trash3-fill"></i>
-                            </a>
+                          
                         </td>
                         <td>@pro.Codigo</td>
                         <td>@pro.RazonSocial</td>
@@ -88,6 +104,7 @@
                         </td>
 
                     </tr>
+                }
                 }
 
 

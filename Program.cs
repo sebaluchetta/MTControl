@@ -8,8 +8,8 @@ builder.Services.AddDbContext<MtcontrolContext> ( options =>
 options.UseSqlServer ( builder.Configuration.GetConnectionString ( "ConexionSQL" ) )
 
 );
-builder.Services.AddScoped<MTControl.Services.Interface.IImageService, MTControl.Services.ImageService> (); 
-
+builder.Services.AddScoped<MTControl.Services.Interface.IImageService, MTControl.Services.ImageService> ();
+builder.Services.AddScoped<MTControl.Services.Interface.IProfilesService, MTControl.Services.ProfileService> ();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
