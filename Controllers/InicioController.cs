@@ -10,23 +10,21 @@ namespace MTControl.Controllers
     {
         
 
-        private List<Image> _imgFooter = new List<Image> ();
-        
-        private readonly IImageService _imageService;
+      
 
 
 
         public InicioController ( MtcontrolContext _context )
         {
            
-            _imageService = new ImageService ( _context );
+      
         }
 
         public IActionResult Index()
         {
-            _imgFooter = _imageService.GetImages (); 
            
-            return View(_imgFooter);
+           
+            return View();
         }
 
        

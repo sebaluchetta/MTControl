@@ -1,4 +1,5 @@
 using System.Diagnostics;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,22 +11,22 @@ namespace MTControl.Controllers
 {
     public class ReportController : Controller
     {
-        private List<Image> _imgFooter = new ();
+
         private readonly MtcontrolContext _DBcontext;
-        private readonly IImageService _imageService;
+
         public ReportController ( MtcontrolContext _context )
         {
             _DBcontext = _context;
-            _imageService = new ImageService ( _context );
+
         }
 
-        public IActionResult Report()
+        public IActionResult Report ()
         {
-            _imgFooter = _imageService.GetImages ();
-         
-            return View (_imgFooter);
+
+
+            return View ();
         }
 
-      
+
     }
 }
