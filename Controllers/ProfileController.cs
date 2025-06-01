@@ -10,10 +10,10 @@ namespace MTControl.Controllers
 {
     public class ProfileController : Controller
     {
-        private List<Image> _imgFooter = new ();
+     
         private List<Profile> _perfiles = new ();
         private readonly MtcontrolContext _DBcontext;
-        private readonly IImageService _imageService;
+      
         private readonly IProfilesService _profilesService;
 
 
@@ -21,7 +21,7 @@ namespace MTControl.Controllers
         public ProfileController ( MtcontrolContext _context )
         {
             _DBcontext = _context;
-            _imageService = new ImageService ( _context );
+           
             _profilesService = new ProfileService ( _context );
         }
 
@@ -31,11 +31,11 @@ namespace MTControl.Controllers
         /// <returns></returns>
         public IActionResult Profiles ()
         {
-            _imgFooter = _imageService.GetImages ();
+            
             _perfiles = _profilesService.GetProfiles ();
 
             TempData [ "Perfiles" ] = _perfiles;
-            return View ( _imgFooter );
+            return View ();
         }
 
         /// <summary>
@@ -44,9 +44,9 @@ namespace MTControl.Controllers
         /// <returns></returns>
         public IActionResult Nuevo ()
         {
-            _imgFooter = _imageService.GetImages ();
+          
 
-            return View ( "ProfileCR", _imgFooter );
+            return View ( "ProfileCR");
         }
         /// <summary>
         /// Guarda un perfil nuevo en la base de datos.
@@ -74,14 +74,14 @@ namespace MTControl.Controllers
         [HttpPost]
         public IActionResult Editar ( int Codigo )
         {
-            _imgFooter = _imageService.GetImages ();
+           
 
             if (Codigo != 0)
             {
                 Profile _profile = new Profile ();
                 _profile = _profilesService.GetProfileById ( Codigo );
                 TempData [ "Profile" ] = _profile;
-                return View ( "ProfileU", _imgFooter );
+                return View ( "ProfileU");
             }
             return RedirectToAction ( "Profiles", "Profiles" );
 
@@ -92,20 +92,20 @@ namespace MTControl.Controllers
 
             if (Codigo != 0)
             {
-                _imgFooter = _imageService.GetImages ();
+              
                 Profile _profile = new Profile ();
                 _profile = _profilesService.GetProfileById ( Codigo );
                 TempData [ "Profile" ] = _profile;
-                return View ( "ProfileV", _imgFooter );
+                return View ( "ProfileV");
             }
             return RedirectToAction ( "Profiles", "Profiles" );
         }
 
         public IActionResult Eliminar ( int Codigo )
         {
-            _imgFooter = _imageService.GetImages ();
+            
             _profilesService.DeleteProfile ( Codigo );
-            return View ( "Profiles",_imgFooter);
+            return View ( "Profiles");
         }
       
     }
