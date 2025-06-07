@@ -1,27 +1,19 @@
-﻿    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-namespace MTControl.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace MTControl.Models;
+
+public partial class Category
 {
+    public int Id { get; set; }
 
-    public class Category
-    {
-      
-        public int Id { get; set; }
+    public string Letra { get; set; } = null!;
 
-      
-        public Char Letra { get; set; }
+    public decimal IngresosBrutosCategoria { get; set; }
 
-      
-        public decimal IngresosBrutosCategoria { get; set; }
+    public decimal PrecioMaximoUnitario { get; set; }
 
-      
-        public decimal PrecioMaximoUnitario { get; set; }
+    public bool UltimaCategoria { get; set; }
 
-        public bool UltimaCategoria { get; set; }
-
-        public List<Profile> Profiles { get; set; } = new ();
-    }
-
+    public virtual ICollection<Profile> Profiles { get; set; } = new List<Profile>();
 }

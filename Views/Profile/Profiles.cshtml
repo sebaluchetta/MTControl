@@ -1,7 +1,9 @@
-﻿@{
-    var Perfiles = TempData [ "Perfiles" ] as List<Profile>;
+﻿@model List<Profile>
+
+@{
     var Mensaje = TempData [ "Mensaje" ] as string;
 }
+
 @if (Mensaje != null)
 {
     <div class="container-fluid">
@@ -50,7 +52,7 @@
 
     </div>
     <div class="table-responsive-md mt-1">
-        <table class="table table-bordered table-striped table-hover ">
+        <table class="table table-bordered table-striped table-hover text-center ">
             <th>Acción</th>
             <th>Código</th>
             <th>Razón social</th>
@@ -60,55 +62,46 @@
             <th>IIBB Umos 12 meses</th>
             <th>Compras Umos 12 meses</th>
             <th>Activo</th>
-            <tdoby>
-                @if(Perfiles is not null)
+            <tbody>
+                @if (Model is not null)
                 {
-                    
-                @foreach (Profile pro in Perfiles)
-                {
-                    <tr>
-                        <td class="g-1">
-                            <form asp-controller="Profile" asp-action="Editar" method="post" class="d-inline">
-                                <input type="hidden" name="Codigo" value="@pro.Codigo" />
-                                <button type="submit" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar perfil">
+
+                    @foreach (Profile pro in Model)
+                    {
+                        <tr>
+                            <td class="g-1">
+                                <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar perfil" asp-controller="Profile" asp-action="Editar" asp-route-Codigo="@pro.Codigo">
                                     <i class="bi bi-pencil-square"></i>
-                                </button>
-                            </form>
-                            <form asp-controller="Profile" asp-action="Consultar" method="post" class="d-inline">
-                                <input type="hidden" name="Codigo" value="@pro.Codigo" />
-                                <button type="submit" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar perfil">
+                                </a>
+                                <a class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Consultar perfil" asp-controller="Profile" asp-action="Consultar" asp-route-Codigo="@pro.Codigo">
                                     <i class="bi bi-eye-fill"></i>
-                                </button>
-                            </form>
-                            <form asp-controller="Profile" asp-action="Eliminar" method="post" class="d-inline">
-                                <input type="hidden" name="Codigo" value="@pro.Codigo" />
-                                <button type="submit" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar perfil">
+                                </a>
+                                <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar perfil" asp-controller="Profile" asp-action="Consultar" asp-route-Codigo="@pro.Codigo">
                                     <i class="bi bi-trash3-fill"></i>
-                                </button>
-                            </form>
+                                </a>
 
-                          
-                        </td>
-                        <td>@pro.Codigo</td>
-                        <td>@pro.RazonSocial</td>
-                        <td>@pro.Cuit</td>
-                        <td>@pro.Actividad</td>
-                        <td>@pro.Categoria</td>
-                        <td>$@pro.Iibb</td>
-                        <td>$@pro.Compras</td>
-                        <td>
-                            <div class="col-12 col-lg-6 mt-lg-3">
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked disabled>
-                                </div>
-                        </td>
 
-                    </tr>
+                            </td>
+                            <td>@pro.Codigo</td>
+                            <td>@pro.RazonSocial</td>
+                            <td>@pro.Cuit</td>
+                            <td>@pro.Actividad.Descripcion</td>
+                            <td>@pro.Categoria.Letra</td>
+                            <td>$@pro.Iibb.ToString( "0.##", CultureInfo.InvariantCulture )</td>
+                            <td>$@pro.Compras.ToString( "0.##", CultureInfo.InvariantCulture )</td>
+                            <td>
+                                <div class="col-12 col-lg-6 mt-lg-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked disabled>
+                                    </div>
+                            </td>
+
+                        </tr>
+                    }
                 }
-                }
 
 
-            </tdoby>
+            </tbody>
         </table>
 
     </div>

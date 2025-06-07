@@ -1,4 +1,5 @@
 using MTControl.Models;
+
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,8 @@ options.UseSqlServer ( builder.Configuration.GetConnectionString ( "ConexionSQL"
 );
 builder.Services.AddScoped<MTControl.Services.Interface.IImageService, MTControl.Services.ImageService> ();
 builder.Services.AddScoped<MTControl.Services.Interface.IProfilesService, MTControl.Services.ProfileService> ();
+builder.Services.AddScoped<MTControl.Services.Interface.IActivityService, MTControl.Services.ActivityService> ();
+builder.Services.AddScoped<MTControl.Services.Interface.ICategoryService, MTControl.Services.CategoryService> ();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +28,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Login}/{action=Login}/{id?}");
+    pattern: "{controller=Profile}/{action=Profiles}/{id?}");
 
 app.Run();

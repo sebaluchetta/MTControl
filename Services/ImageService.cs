@@ -4,7 +4,6 @@ namespace MTControl.Services
 {
     public class ImageService : IImageService
     {
-
         private readonly MtcontrolContext _context;
         public ImageService ( MtcontrolContext context )
         {
@@ -14,5 +13,7 @@ namespace MTControl.Services
         {
             return _context.Images.ToList ();
         }
+
+        
     }
 }
