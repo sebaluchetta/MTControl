@@ -2,48 +2,47 @@
 <h1 class="text-center mb-5 text-decoration-underline">Nuevo Perfil</h1>
 <div asp-validation-summary="All">
 
-    <form action="Guardar" method="post" id="NuevoPerfilForm">
+    <form asp-action="Guardar" method="post" id="NuevoPerfilForm">
         <div class="container-fluid">
             <div class="container-fluid">
 
                 <div class=" col-12 col-lg-6 ">
                     <label for="inputRazonSocial" class="form-label">Razón Social</label>
-                    <input type="text" class="form-control" id="inputRazonSocial" name="RazonSocial">
+                    <input type="text" class="form-control" name="RazonSocial">
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCUIT" class="form-label">CUIT</label>
-                    <input type="number" class="form-control" id="inputCUIT" name="Cuit">
+                    <input type="number" class="form-control" name="Cuit">
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputFiActividades" class="form-label">Fecha inicio de actividades</label>
-                    <input type="date" class="form-control" id="inputFiActividades" name="FechaInicioActividades">
+                    <input type="date" class="form-control" name="FechaInicioActividades">
                 </div>
-
-
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCategoria" class="form-label">Categoria</label>
-                    <select id="inputCategoria" class="form-select" name="Categoria" asp-items="@Model._categories">
-                        <option selected disabled>Seleccione una categoria</option>
-                        >
+                    <select name="CategoriaId" class="form-select" asp-items="Model._categories">
+                        <option value="">Seleccione una categoria</option>
+
                     </select>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputActividad" class="form-label">Actividad Principal</label>
-                        <select id="inputCategoria" class="form-select" name="Actividad" asp-items="@Model._activities">
-                        <option selected disabled>Seleccione una actividad</option>
+                    <select name="ActividadId" class="form-select" asp-items="Model._activities">
+                        <option value="">Seleccione una actividad</option>
                     </select>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputIIBB" class="form-label">Ingresos brutos totales últimos 12 meses</label>
-                    <input type="number" class="form-control" id="inputIIBB" name="Iibb">
+                    <input type="number" class="form-control" name="Iibb">
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCompras" class="form-label">Compras totales últimos 12 meses</label>
-                    <input type="number" class="form-control" id="inputCompras" name="Compras">
+                    <input type="number" class="form-control" name="Compras">
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked name="Activo" />
+                        <input type="hidden" name="Activo" value="false" />
+                        <input class="form-check-input" type="checkbox" role="switch" name="Activo" value="true" checked />
                         <label class="form-check-label" for="ToggleActivo">Activo</label>
                     </div>
                 </div>

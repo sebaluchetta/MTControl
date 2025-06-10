@@ -41,10 +41,12 @@ namespace MTControl.Controllers
         /// Crea un nuevo perfil y lo guarda en la base de datos.
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public IActionResult Nuevo ()
         {
             _profileVM = CrearProvileVM ();
-            return View ( "ProfileCR",_profileVM );
+          
+            return View ( "ProfileCR",_profileVM);
         }
 
 
@@ -68,7 +70,7 @@ namespace MTControl.Controllers
             TempData [ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} fue guardado correctamente";
             return RedirectToAction ( "Profiles", "Profile" );
             }
-            return RedirectToAction ( "Profiles", "ProfileCR" );
+            return RedirectToAction ( "Nuevo", "Profile" );
 
         }
         /// <summary>
@@ -120,18 +122,18 @@ namespace MTControl.Controllers
         {
             ProfileVM _proVM = new ProfileVM ()
             {
-                //_profile = pro,
-                //_activities = _activityService.GetActivities ().Select ( act => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem ()
-                //{
-                //    Text = act.Descripcion,
-                //    Value = act.Id.ToString ()
+                _profile = pro is null? new Profile():pro,
+                _activities = _activityService.GetActivities ().Select ( act => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem ()
+                {
+                    Text = act.Descripcion,
+                    Value = act.Id.ToString ()
 
-                //} ).ToList (),
-                //_categories = _categoryService.GetCategories ().Select ( cat => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem ()
-                //{
-                //    Text = cat.Letra,
-                //    Value = cat.Id.ToString ()
-                //} ).ToList ()
+                } ).ToList (),
+                _categories = _categoryService.GetCategories ().Select ( cat => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem ()
+                {
+                    Text = cat.Letra.ToString(),
+                    Value = cat.Id.ToString ()
+                } ).ToList ()
 
             };
                 return _proVM;
