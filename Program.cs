@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSession ();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MtcontrolContext> ( options =>
 options.UseSqlServer ( builder.Configuration.GetConnectionString ( "ConexionSQL" ) )
@@ -23,7 +24,7 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession ();
 app.UseAuthorization();
 
 app.MapControllerRoute(

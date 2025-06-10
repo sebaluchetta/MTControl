@@ -9,14 +9,14 @@ namespace MTControl.Services
         {
             _context = context;
         }
-        //public List<Category> GetCategories ()
-        //{
-        //    return _context.Categories.ToList ();
-        //}
+        public List<Category> GetCategories ()
+        {
+            return _context.Categories.ToList ();
+        }
 
-        //public Category GetCategoryById ( int id )
-        //{
-        //    return _context.Categories.FirstOrDefault ( x => x.Id == id );
-        //}
+        public Category GetCategoryById ( int id )
+        {
+            return _context.Categories.FirstOrDefault ( x => x.Id == id );
+        }
     }
 }
