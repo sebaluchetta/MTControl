@@ -40,7 +40,7 @@
 
             </div>
             <div class="col">
-                <a class="btn btn-outline-dark disabled" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="Profile" asp-action="ExpPDF">
+                <a class="btn btn-outline-dark disabled" id="BtnExpPdf"="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="Profile" asp-action="ExpPDF">
                     <i class="bi bi-file-earmark-pdf-fill">
 
                         <p class="d-none d-md-block d-lg-inline">Exportar a PDF</p>
@@ -52,7 +52,7 @@
 
     </div>
     <div class="table-responsive-md mt-1">
-        <table class="table table-bordered table-striped table-hover text-center ">
+        <table id="ProfileTable" class="table table-bordered table-striped table-hover text-center ">
             <th>Acción</th>
             <th>Código</th>
             <th>Razón social</th>
@@ -76,7 +76,7 @@
                                 <a class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Consultar perfil" asp-controller="Profile" asp-action="Consultar" asp-route-Codigo="@pro.Codigo">
                                     <i class="bi bi-eye-fill"></i>
                                 </a>
-                                <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar perfil" asp-controller="Profile" asp-action="Consultar" asp-route-Codigo="@pro.Codigo">
+                                <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar perfil" asp-controller="Profile" asp-action="Eliminar" asp-route-Codigo="@pro.Codigo">
                                     <i class="bi bi-trash3-fill"></i>
                                 </a>
 
@@ -87,8 +87,8 @@
                             <td>@pro.Cuit</td>
                             <td>@pro.Actividad.Descripcion</td>
                             <td>@pro.Categoria.Letra</td>
-                            <td>$@pro.Iibb.ToString( "0.##", CultureInfo.InvariantCulture )</td>
-                            <td>$@pro.Compras.ToString( "0.##", CultureInfo.InvariantCulture )</td>
+                            <td>@pro.Iibb.ToString( "C", new System.Globalization.CultureInfo ( "es-AR" ) )</td>
+                            <td>@pro.Compras.ToString( "C", new System.Globalization.CultureInfo ( "es-AR" ) )</td>
                             <td>
                                 <div class="col-12 col-lg-6 mt-lg-3">
                                     <div class="form-check form-switch">

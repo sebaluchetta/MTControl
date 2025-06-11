@@ -13,7 +13,7 @@ namespace MTControl.Controllers
 
         private List<Profile> _perfiles = new ();
         private readonly MtcontrolContext _DBcontext;
-        private  ProfileVM _profileVM;
+        private ProfileVM _profileVM;
         private readonly IProfilesService _profilesService;
         private readonly ICategoryService _categoryService;
         private readonly IActivityService _activityService;
@@ -34,7 +34,7 @@ namespace MTControl.Controllers
         public IActionResult Profiles ()
         {
             _perfiles = _profilesService.GetProfiles ();
-            return View (_perfiles);
+            return View ( _perfiles );
         }
 
         /// <summary>
@@ -45,8 +45,8 @@ namespace MTControl.Controllers
         public IActionResult Nuevo ()
         {
             _profileVM = CrearProvileVM ();
-          
-            return View ( "ProfileCR",_profileVM);
+
+            return View ( "ProfileCR", _profileVM );
         }
 
 
@@ -58,19 +58,19 @@ namespace MTControl.Controllers
         [HttpPost]
         public IActionResult Guardar ( Profile perfil )
         {
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 if (perfil.Codigo != 0)
-            {
-                _profilesService.UpdateProfile ( perfil );
-                TempData [ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} fue actualizado correctamente";
+                {
+                    _profilesService.UpdateProfile ( perfil );
+                    TempData [ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} fue actualizado correctamente";
+                    return RedirectToAction ( "Profiles", "Profile" );
+                }
+                perfil = _profilesService.CreateProfile ( perfil );
+                TempData [ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} fue guardado correctamente";
                 return RedirectToAction ( "Profiles", "Profile" );
             }
-            perfil = _profilesService.CreateProfile ( perfil );
-            TempData [ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} fue guardado correctamente";
             return RedirectToAction ( "Profiles", "Profile" );
-            }
-            return RedirectToAction ( "Nuevo", "Profile" );
 
         }
         /// <summary>
@@ -81,16 +81,10 @@ namespace MTControl.Controllers
         [HttpGet]
         public IActionResult Editar ( int Codigo )
         {
-
-            if (ModelState.IsValid)
-            {
-               
-                Profile _profile = new Profile ();
-                _profile = _profilesService.GetProfileById ( Codigo );
-                _profileVM = CrearProvileVM (_profile);
-                return View ( "ProfileU", _profileVM);
-            }
-            return RedirectToAction ( "Profiles", "Profiles" );
+            Profile _profile = new Profile ();
+            _profile = _profilesService.GetProfileById ( Codigo );
+            _profileVM = CrearProvileVM ( _profile );
+            return View ( "ProfileU", _profileVM );
         }
 
         /// <summary>
@@ -101,28 +95,39 @@ namespace MTControl.Controllers
         [HttpGet]
         public IActionResult Consultar ( int Codigo )
         {
-                Profile _profile = new Profile ();
-                _profile = _profilesService.GetProfileById ( Codigo );
-                return View ( "ProfileV",_profile );
+            Profile _profile = new Profile ();
+            _profile = _profilesService.GetProfileById ( Codigo );
+            return View ( "ProfileV", _profile );
         }
         /// <summary>
-        /// Elimina un perfil
+        /// Muestra el perfil antes de eliminarlo
         /// </summary>
         /// <param name="Codigo"></param>
         /// <returns></returns>
         [HttpGet]
         public IActionResult Eliminar ( int Codigo )
         {
-            ///TOTempData [ "Profile" ] = _profile;DO Implementar vista de delete. llamara a la consulta con un boton eliminar
-            _profilesService.DeleteProfile ( Codigo );
-            return View ( "Profiles" );
+            Profile _profile = new Profile ();
+            _profile = _profilesService.GetProfileById ( Codigo );
+            ViewBag.Operacion = "Eliminar";
+            
+            return View ( "ProfileD",_profile );
+        }
+        [HttpPost]
+        public IActionResult Borrar ( int codigo )
+        {
+            
+            _profilesService.DeleteProfile ( codigo );
+            
+
+            return RedirectToAction("Profiles","profile");
         }
         #region metodos privados
-        private ProfileVM CrearProvileVM (Profile pro=null)
+        private ProfileVM CrearProvileVM ( Profile pro = null )
         {
             ProfileVM _proVM = new ProfileVM ()
             {
-                _profile = pro is null? new Profile():pro,
+                _profile = pro is null ? new Profile () : pro,
                 _activities = _activityService.GetActivities ().Select ( act => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem ()
                 {
                     Text = act.Descripcion,
@@ -131,12 +136,12 @@ namespace MTControl.Controllers
                 } ).ToList (),
                 _categories = _categoryService.GetCategories ().Select ( cat => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem ()
                 {
-                    Text = cat.Letra.ToString(),
+                    Text = cat.Letra.ToString (),
                     Value = cat.Id.ToString ()
                 } ).ToList ()
 
             };
-                return _proVM;
+            return _proVM;
         }
         #endregion
     }
