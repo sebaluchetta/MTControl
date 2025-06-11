@@ -1,7 +1,12 @@
 ﻿@model Profile
+
+
 <h1 class="text-center mb-5 text-decoration-underline">Consultar Perfil</h1>
+
+
 <fieldset disabled>
-    <form action="Guardar" method="post" id="EditarPerfilForm">
+    <form asp-action="Guardar" method="post" id="EditarPerfilForm">
+
         <div class="container-fluid">
             <div class="container-fluid">
                 <input type="text" class="form-control" id="inputCodigo" name="Codigo" hidden value="@Model.Codigo">
@@ -12,7 +17,7 @@
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCUIT" class="form-label">CUIT</label>
-                    <input type="number" class="form-control" id="inputCUIT" name="Cuit" value="@Model.Cuit">
+                    <input type="number" class="form-control" id="inputCUIT" name="Cuit" value="@Model.Cuit" />
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputFiActividades" class="form-label">Fecha inicio de actividades</label>
@@ -30,7 +35,7 @@
                     <label for="inputActividad" class="form-label">Actividad Principal</label>
                     <select id="inputCategoria" class="form-select" name="Actividad">
                         <option selected disabled value="Model.ActividadId">@Model.Actividad.Descripcion</option>
-                        
+
 
                     </select>
                 </div>
@@ -48,18 +53,15 @@
                         <label class="form-check-label" for="ToggleActivo">Activo</label>
                     </div>
                 </div>
+
     </form>
 </fieldset>
-                <div class="row row-cols-auto g-4 mt-3 ">
-                    <div class="col-4">
-                        <button type="button" class="btn btn-outline-dark" id="BtnCancelar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Volver" onclick="history.back()">
-                            <i class="bi bi-box-arrow-left"></i>
-                            <p class="d-none d-md-block d-lg-inline"> Volver</p>
-                        </button>
-                    </div>
-                </div>
-
-
-
-            </div>
-
+<div class="row row-cols-auto g-4 mt-3">
+    <div class="col-4">
+        <button type="button" class="btn btn-outline-dark" id="BtnCancelar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Volver" onclick="history.back()">
+            <i class="bi bi-box-arrow-left"></i>
+            <p class="d-none d-md-block d-lg-inline"> Volver</p>
+        </button>
+    </div>
+</div>
+                

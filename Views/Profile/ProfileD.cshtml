@@ -1,0 +1,72 @@
+﻿@model Profile
+
+
+<h1 class="text-center mb-5 text-decoration-underline">Consultar Perfil</h1>
+
+
+
+<form asp-action="Borrar" method="post" id="EditarPerfilForm">
+
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <input type="text" class="form-control" id="inputCodigo" name="Codigo" hidden value="@Model.Codigo">
+
+            <div class=" col-12 col-lg-6 ">
+                <label for="inputRazonSocial" class="form-label">Razón Social</label>
+                <input type="text" class="form-control" id="inputRazonSocial" name="RazonSocial" value="@Model.RazonSocial" readonly>
+            </div>
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <label for="inputCUIT" class="form-label">CUIT</label>
+                <input type="number" class="form-control" id="inputCUIT" name="Cuit" value="@Model.Cuit" readonly />
+            </div>
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <label for="inputFiActividades" class="form-label">Fecha inicio de actividades</label>
+                <input type="date" class="form-control" id="inputFiActividades" name="FechaInicioActividades" value="@Model.FechaInicioActividades.ToString("yyyy-MM-dd")" readonly>
+            </div>
+
+
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <label for="inputCategoria" class="form-label">Categoria</label>
+                <select id="inputCategoria" class="form-select" name="Categoria" disabled>
+                    <option  selected  value="Model.CategoriaID">@Model.Categoria.Letra</option>
+                </select>
+            </div>
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <label for="inputActividad" class="form-label">Actividad Principal</label>
+                <select id="inputCategoria" class="form-select" name="Actividad" disabled>
+                    <option  selected  value="Model.ActividadId">@Model.Actividad.Descripcion</option>
+
+
+                </select>
+            </div>
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <label for="inputIIBB" class="form-label">Ingresos brutos totales últimos 12 meses</label>
+                <input type="text" class="form-control" id="inputIIBB" name="Iibb" value="@Model.Iibb.ToString("C", new System.Globalization.CultureInfo("es-AR"))" readonly>
+            </div>
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <label for="inputCompras" class="form-label">Compras totales últimos 12 meses</label>
+                <input type="text" class="form-control" id="inputCompras" name="Compras" value="@Model.Compras.ToString("C", new System.Globalization.CultureInfo("es-AR"))" readonly>
+            </div>
+            <div class="col-12 col-lg-6 mt-lg-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked name="Activo" readonly />
+                    <label class="form-check-label" for="ToggleActivo">Activo</label>
+                </div>
+            </div>
+
+            <div class="row row-cols-auto g-4 mt-3">
+                <div class="col-1">
+                    <button type="submit" class="btn btn-outline-danger" id="BtnEliminar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Eliminar Perfil">
+                        <i class="bi bi-trash3-fill"></i>
+                        <p class="d-none d-md-block d-lg-inline"> Eliminar</p>
+                    </button>
+                </div>
+                <div class="col-1">
+                    <button type="button" class="btn btn-outline-dark" id="BtnCancelar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Volver" onclick="history.back()">
+                        <i class="bi bi-box-arrow-left"></i>
+                        <p class="d-none d-md-block d-lg-inline"> Volver</p>
+                    </button>
+                </div>
+            </div>
+</form>
+</fieldset>
