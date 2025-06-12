@@ -1,27 +1,30 @@
 ﻿@model ProfileVM
 <h1 class="text-center mb-5 text-decoration-underline">Editar Perfil</h1>
 <div asp-validation-summary="All">
-
     <form asp-action="Guardar" method="post" id="EditarPerfilForm">
         <div class="container-fluid">
             <div class="container-fluid">
                 <input type="text" class="form-control" id="inputCodigo" name="Codigo" hidden value="@Model._profile.Codigo">
                 <div class=" col-12 col-lg-6 ">
                     <label for="inputRazonSocial" class="form-label">Razón Social</label>
-                    <input type="text" class="form-control" id="inputRazonSocial" name="RazonSocial" value="@Model._profile.RazonSocial">
+                    <input type="text" class="form-control" name="RazonSocial" asp-for="_profile.RazonSocial" value=" @Model._profile.RazonSocial">
+                    <span data-valmsg-for="RazonSocial" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCUIT" class="form-label">CUIT</label>
-                    <input type="number" class="form-control" id="inputCUIT" name="Cuit" value="@Model._profile.Cuit">
+                    <input type="number" class="form-control" name="Cuit" asp-for="_profile.Cuit" value="@Model._profile.Cuit">
+                    <span data-valmsg-for="Cuit" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputFiActividades" class="form-label">Fecha inicio de actividades</label>
-                    <input type="date" class="form-control" id="inputFiActividades" name="FechaInicioActividades" value="@Model._profile.FechaInicioActividades.ToString("yyyy-MM-dd")">
+                    <input type="date" class="form-control" iname="FechaInicioActividades" asp-for="_profile.FechaInicioActividades" value="@Model._profile.FechaInicioActividades.ToString("yyyy-MM-dd")">
+                    <span data-valmsg-for="FechaInicioActividades" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
 
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCategoria" class="form-label">Categoria</label>
                     <select id="inputCategoria" class="form-select" name="CategoriaId" asp-for="_profile.CategoriaId" asp-items="@Model._categories.ToList()">
+                        <span data-valmsg-for="CategoriaId" data-valmsg-replace="true" class="text-danger"></span>
                         <option disabled value="">
                             Seleccione una categoria
                         </option>
@@ -30,17 +33,20 @@
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputActividad" class="form-label">Actividad Principal</label>
                     <select id="inputActividad" class="form-select" name="ActividadId" asp-for="_profile.ActividadId" asp-items="@Model._activities.ToList()">
-                        <option  disabled value="">
+                        <span data-valmsg-for="ActividadId" data-valmsg-replace="true" class="text-danger"></span>
+                        <option disabled value="">
                             Seleccione una Actividad
                         </option>
 
                     </select>
                 </div>
-                <input type="number" class="form-control" id="inputIIBB" name="Iibb"
+                <input type="number" class="form-control" name="Iibb" asp-for="_profile.Iibb"
                        value="@Model._profile.Iibb.ToString("0.##", CultureInfo.InvariantCulture)" />
+                <span data-valmsg-for="Iibb" data-valmsg-replace="true" class="text-danger"></span>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCompras" class="form-label">Compras totales últimos 12 meses</label>
-                    <input type="number" class="form-control" id="inputCompras" name="Compras" value="@Model._profile.Compras.ToString("0.##", CultureInfo.InvariantCulture)">
+                    <input type="number" class="form-control" name="Compras" asp-for="_profile.Compras" value="@Model._profile.Compras.ToString("0.##", CultureInfo.InvariantCulture)">
+                    <span data-valmsg-for="Compras" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <div class="form-check form-switch">
@@ -49,19 +55,20 @@
                         <label class="form-check-label" for="ToggleActivo">Activo</label>
                     </div>
                 </div>
-                </div>
-                <div class="row row-cols-auto g-4 mt-3 ">
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-outline-success" id="BtnGuardar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Guardar Perfil">
-                            <i class="bi bi-floppy2-fill"></i>
-                            <p class="d-none d-md-block d-lg-inline"> Guardar</p>
-                        </button>
-                        <button type="button" class="btn btn-outline-dark" id="BtnCancelar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Cancelar" onclick="history.back()">
-                            <i class="bi bi-box-arrow-left"></i>
-                            <p class="d-none d-md-block d-lg-inline"> Cancelar</p>
-                        </button>
-                    </div>
+            </div>
+            <div class="row row-cols-auto g-4 mt-3 ">
+                <div class="col-4">
+                    <button type="submit" class="btn btn-outline-success" id="BtnGuardar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Guardar Perfil">
+                        <i class="bi bi-floppy2-fill"></i>
+                        <p class="d-none d-md-block d-lg-inline"> Guardar</p>
+                    </button>
+                    <button type="button" class="btn btn-outline-dark" id="BtnCancelar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Cancelar" onclick="history.back()">
+                        <i class="bi bi-box-arrow-left"></i>
+                        <p class="d-none d-md-block d-lg-inline"> Cancelar</p>
+                    </button>
                 </div>
             </div>
+        </div>
     </form>
 </div>
+
