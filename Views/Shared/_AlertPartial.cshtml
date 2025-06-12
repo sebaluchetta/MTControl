@@ -1,0 +1,18 @@
+﻿@{
+    var Mensaje = TempData [ "Mensaje" ] as string;
+    var Alerta = TempData [ "MensajeColor" ] as string;
+}
+@if (Mensaje != null)
+{
+    <div class="container-fluid">
+        <div class="row align-items-lg-end">
+            <div class="col-6 offset-6" id="PlaceHolderAlert">
+                <div class="@Alerta" role="alert">
+                    @Mensaje
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
