@@ -51,7 +51,7 @@ namespace MTControl.Controllers
 
 
         /// <summary>
-        /// Guarda un perfil nuevo en la base de datos.
+        /// Guarda un perfil nuevo o actualizado en la base de datos.
         /// </summary>
         /// <param name="perfil"></param>
         /// <returns></returns>
@@ -60,12 +60,12 @@ namespace MTControl.Controllers
         {
             if (!ModelState.IsValid)
             {
-                _profileVM = CrearProvileVM (perfil);
+                _profileVM = CrearProvileVM ( perfil );
                 TempData [ "Mensaje" ] = $"Hubo problemas al guardar el perfil. Por favor intentelo nuevamente";
                 TempData [ "MensajeColor" ] = "alert alert-danger alert-dismissible";
                 string viewName = perfil.Codigo == 0 ? "ProfileCR" : "ProfileU";
                 return View ( viewName, _profileVM );
-                
+
             }
             if (perfil.Codigo != 0)
             {
@@ -75,7 +75,7 @@ namespace MTControl.Controllers
             else
             {
                 perfil = _profilesService.CreateProfile ( perfil );
-            TempData [ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} fue creado correctamente";
+                TempData [ "Mensaje" ] = $"El Perfil {perfil.RazonSocial} fue creado correctamente";
 
             }
             TempData [ "MensajeColor" ] = "alert alert-success alert-dismissible";
@@ -118,7 +118,7 @@ namespace MTControl.Controllers
         {
             Profile _profile = new Profile ();
             _profile = _profilesService.GetProfileById ( Codigo );
-            ViewBag.Operacion = "Eliminar";
+
 
             return View ( "ProfileD", _profile );
         }
@@ -130,6 +130,39 @@ namespace MTControl.Controllers
 
 
             return RedirectToAction ( "Profiles", "profile" );
+        }
+        /// <summary>
+        /// Busca perfiles según el texto ingresado en el campo de búsqueda. Busca en Codigo, Razon social, Cuit, Categoria y Actividad.
+        /// </summary>
+        /// <param name="busqueda"></param>
+        /// <returns></returns>
+        public IActionResult Encontrar ( string busqueda )
+        {
+
+            List<Profile> _profiles = new List<Profile> ();
+            _profiles = (from perfil in _profilesService.GetProfiles () select perfil).ToList();
+
+            if (!string.IsNullOrEmpty ( busqueda ))
+            {
+                _profiles = _profiles.Where ( p =>
+                    // x Código (convierte a texto)
+                    p.Codigo.ToString ().Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
+                    // x Razón Social
+                    || p.RazonSocial.Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
+                    // x CUIT
+                    || p.Cuit.Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
+                    // x Categoría (letra)
+                    || p.Categoria.Letra.Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
+                    // x Actividad (descripción)
+                    || p.Actividad.Descripcion.Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
+                     ).ToList ();
+            }
+            else
+            {
+                _profiles = _profilesService.GetProfiles ();
+            }
+
+            return View ( "Profiles", _profiles );
         }
         #region metodos privados
         private ProfileVM CrearProvileVM ( Profile pro = null )

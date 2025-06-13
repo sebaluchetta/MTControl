@@ -1,5 +1,5 @@
 ﻿@model List<Profile>
-<partial name="_AlertPartial" />
+<partial name="_AlertPartial"/>
 
 <div class="container-fluid">
     <div class="col">
@@ -22,7 +22,7 @@
 
             </div>
             <div class="col">
-                <a class="btn btn-outline-dark disabled" id="BtnExpPdf"="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="Profile" asp-action="ExpPDF">
+                <a class="btn btn-outline-dark" id="BtnExpPdf" ="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="Profile" asp-action="ExpPDF">
                     <i class="bi bi-file-earmark-pdf-fill">
 
                         <p class="d-none d-md-block d-lg-inline">Exportar a PDF</p>
@@ -30,61 +30,73 @@
                 </a>
 
             </div>
+            <div class="col-8">
+                <form asp-action="Encontrar" method="get" id="BuscarForm">
+                <div class="input-group mb-3">
+                    <input type="text" name="busqueda" class="form-control" id="InputBuscar" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-success" type="summit" id="button-addon2"><i class="bi bi-search "></i></button>
+                        <button class="btn btn-outline-danger" type="submit" id="BtnLimpiar" onclick="Limpiar()"><i class="bi bi-x-circle"></i></button>
+                </div>
+
+                </form>
+                
+            </div>
         </div>
-
     </div>
-    <div class="table-responsive-md mt-1">
-        <table id="ProfileTable" class="table table-bordered table-striped table-hover text-center ">
-            <th>Acción</th>
-            <th>Código</th>
-            <th>Razón social</th>
-            <th>CUIT</th>
-            <th>Actividad</th>
-            <th>Categoria</th>
-            <th>IIBB Umos 12 meses</th>
-            <th>Compras Umos 12 meses</th>
-            <th>Activo</th>
-            <tbody>
-                @if (Model is not null)
+
+</div>
+<div class="table-responsive-md mt-1">
+    <table id="ProfileTable" class="table table-bordered table-striped table-hover text-center ">
+        <th>Acción</th>
+        <th>Código</th>
+        <th>Razón social</th>
+        <th>CUIT</th>
+        <th>Actividad</th>
+        <th>Categoria</th>
+        <th>IIBB Umos 12 meses</th>
+        <th>Compras Umos 12 meses</th>
+        <th>Activo</th>
+        <tbody>
+            @if (Model is not null)
+            {
+
+                @foreach (Profile pro in Model)
                 {
-
-                    @foreach (Profile pro in Model)
-                    {
-                        <tr>
-                            <td class="g-1">
-                                <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar perfil" asp-controller="Profile" asp-action="Editar" asp-route-Codigo="@pro.Codigo">
-                                    <i class="bi bi-pencil-square"></i>
-                                </a>
-                                <a class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Consultar perfil" asp-controller="Profile" asp-action="Consultar" asp-route-Codigo="@pro.Codigo">
-                                    <i class="bi bi-eye-fill"></i>
-                                </a>
-                                <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar perfil" asp-controller="Profile" asp-action="Eliminar" asp-route-Codigo="@pro.Codigo">
-                                    <i class="bi bi-trash3-fill"></i>
-                                </a>
+                    <tr>
+                        <td class="g-1">
+                            <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar perfil" asp-controller="Profile" asp-action="Editar" asp-route-Codigo="@pro.Codigo">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Consultar perfil" asp-controller="Profile" asp-action="Consultar" asp-route-Codigo="@pro.Codigo">
+                                <i class="bi bi-eye-fill"></i>
+                            </a>
+                            <a class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar perfil" asp-controller="Profile" asp-action="Eliminar" asp-route-Codigo="@pro.Codigo">
+                                <i class="bi bi-trash3-fill"></i>
+                            </a>
 
 
-                            </td>
-                            <td>@pro.Codigo</td>
-                            <td>@pro.RazonSocial</td>
-                            <td>@pro.Cuit</td>
-                            <td>@pro.Actividad.Descripcion</td>
-                            <td>@pro.Categoria.Letra</td>
-                            <td>@pro.Iibb.ToString( "C", new System.Globalization.CultureInfo ( "es-AR" ) )</td>
-                            <td>@pro.Compras.ToString( "C", new System.Globalization.CultureInfo ( "es-AR" ) )</td>
-                            <td>
-                                <div class="col-12 col-lg-6 mt-lg-3">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked disabled>
-                                    </div>
-                            </td>
+                        </td>
+                        <td>@pro.Codigo</td>
+                        <td>@pro.RazonSocial</td>
+                        <td>@pro.Cuit</td>
+                        <td>@pro.Actividad.Descripcion</td>
+                        <td>@pro.Categoria.Letra</td>
+                        <td>@pro.Iibb.ToString( "C", new System.Globalization.CultureInfo ( "es-AR" ) )</td>
+                        <td>@pro.Compras.ToString( "C", new System.Globalization.CultureInfo ( "es-AR" ) )</td>
+                        <td>
+                            <div class="col-12 col-lg-6 mt-lg-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked disabled>
+                                </div>
+                        </td>
 
-                        </tr>
-                    }
+                    </tr>
                 }
+            }
 
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 
-    </div>
+</div>
 </div>
