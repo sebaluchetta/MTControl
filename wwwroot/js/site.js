@@ -10,4 +10,13 @@ document.getElementById('BtnExpPdf').addEventListener('click', () => {
     };
     // Genera y descarga
     html2pdf().set(opt).from(element).save();
-  });
+});
+
+function Limpiar() {
+    document.getElementById('InputBuscar').value = '';
+}
+
+document.getElementById('BtnLimpiar').addEventListener('click', () => {
+    Limpiar();
+});
+
