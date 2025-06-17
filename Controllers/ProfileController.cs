@@ -138,30 +138,8 @@ namespace MTControl.Controllers
         /// <returns></returns>
         public IActionResult Encontrar ( string busqueda )
         {
-
             List<Profile> _profiles = new List<Profile> ();
-            _profiles = (from perfil in _profilesService.GetProfiles () select perfil).ToList();
-
-            if (!string.IsNullOrEmpty ( busqueda ))
-            {
-                _profiles = _profiles.Where ( p =>
-                    // x Código (convierte a texto)
-                    p.Codigo.ToString ().Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
-                    // x Razón Social
-                    || p.RazonSocial.Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
-                    // x CUIT
-                    || p.Cuit.Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
-                    // x Categoría (letra)
-                    || p.Categoria.Letra.Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
-                    // x Actividad (descripción)
-                    || p.Actividad.Descripcion.Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
-                     ).ToList ();
-            }
-            else
-            {
-                _profiles = _profilesService.GetProfiles ();
-            }
-
+            _profiles = _profilesService.SearchProfiles ( busqueda );
             return View ( "Profiles", _profiles );
         }
         #region metodos privados

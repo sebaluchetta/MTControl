@@ -14,6 +14,4 @@ public partial class Category
     public decimal PrecioMaximoUnitario { get; set; }
 
     public bool UltimaCategoria { get; set; }
-
-    public virtual ICollection<Profile> Profiles { get; set; } = new List<Profile>();
 }
