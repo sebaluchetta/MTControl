@@ -10,6 +10,4 @@ public partial class Activity
     public string Descripcion { get; set; } = null!;
 
     public decimal Porcentaje { get; set; }
-
-    public virtual ICollection<Profile> Profiles { get; set; } = new List<Profile>();
 }

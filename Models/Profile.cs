@@ -12,7 +12,7 @@ public partial class Profile
     public string RazonSocial { get; set; } = null!;
     [Required ( ErrorMessage = "El campo {0} es obligatorio" )]
     [StringLength ( maximumLength: 11, MinimumLength = 11, ErrorMessage = "El {0} debe tener 11 caracteres" )]
-    
+
     public string Cuit { get; set; } = null!;
     [Required ( ErrorMessage = "El campo {0} es obligatorio" )]
     [Display ( Name = "Categoria" )]
@@ -33,4 +33,8 @@ public partial class Profile
     public bool? Activo { get; set; }
     public virtual Activity? Actividad { get; set; }
     public virtual Category? Categoria { get; set; }
+
+    public virtual ICollection<Purchase> Purchases { get; set; } = new List<Purchase>();
+
+    public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();
 }

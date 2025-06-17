@@ -46,6 +46,31 @@ namespace MTControl.Services
                 _context.SaveChanges ();
             }
         }
+        public List<Profile> SearchProfiles (string busqueda)
+        {
+            List<Profile> _profiles = new List<Profile> ();
+
+            if (!string.IsNullOrEmpty ( busqueda ))
+            {
+                _profiles = GetProfiles().Where ( p =>
+                    // x Código (convierte a texto)
+                    p.Codigo.ToString ().Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
+                    // x Razón Social
+                    || p.RazonSocial.Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
+                    // x CUIT
+                    || p.Cuit.Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
+                    // x Categoría (letra)
+                    || p.Categoria.Letra.Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
+                    // x Actividad (descripción)
+                    || p.Actividad.Descripcion.Contains ( busqueda, StringComparison.OrdinalIgnoreCase )
+                     ).ToList ();
+            }
+            else
+            {
+                _profiles = GetProfiles ();
+            }
+            return _profiles;
+        }
 
     }
 }

@@ -6,10 +6,6 @@ namespace MTControl.Models;
 
 public partial class MtcontrolContext : DbContext
 {
-    public MtcontrolContext()
-    {
-    }
-
     public MtcontrolContext(DbContextOptions<MtcontrolContext> options)
         : base(options)
     {
@@ -23,8 +19,9 @@ public partial class MtcontrolContext : DbContext
 
     public virtual DbSet<Profile> Profiles { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Name=ConexionSQL");
+    public virtual DbSet<Purchase> Purchases { get; set; }
+
+    public virtual DbSet<Sale> Sales { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -82,16 +79,42 @@ public partial class MtcontrolContext : DbContext
             entity.Property(e => e.RazonSocial)
                 .HasMaxLength(50)
                 .IsFixedLength();
+        });
 
-            entity.HasOne(d => d.Actividad).WithMany(p => p.Profiles)
-                .HasForeignKey(d => d.ActividadId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Profile_ACTIVITY");
+        modelBuilder.Entity<Purchase>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Purchase__3214EC074467B84E");
 
-            entity.HasOne(d => d.Categoria).WithMany(p => p.Profiles)
-                .HasForeignKey(d => d.CategoriaId)
+            entity.ToTable("Purchase");
+
+            entity.Property(e => e.CodPerfil).HasColumnName("Cod_Perfil");
+            entity.Property(e => e.Tipo)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Total).HasColumnType("decimal(18, 2)");
+
+            entity.HasOne(d => d.CodPerfilNavigation).WithMany(p => p.Purchases)
+                .HasForeignKey(d => d.CodPerfil)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Profile_Category");
+                .HasConstraintName("FK_Purchase_Profile");
+        });
+
+        modelBuilder.Entity<Sale>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Sale__3214EC07F9457EB3");
+
+            entity.ToTable("Sale");
+
+            entity.Property(e => e.CodPerfil).HasColumnName("Cod_Perfil");
+            entity.Property(e => e.Tipo)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Total).HasColumnType("decimal(18, 2)");
+
+            entity.HasOne(d => d.CodPerfilNavigation).WithMany(p => p.Sales)
+                .HasForeignKey(d => d.CodPerfil)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Sale_Profile");
         });
 
         OnModelCreatingPartial(modelBuilder);
