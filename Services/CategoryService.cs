@@ -18,5 +18,10 @@ namespace MTControl.Services
         {
             return _context.Categories.FirstOrDefault ( x => x.Id == id );
         }
+        public Category GetMaxCategory ()
+        {
+            return _context.Categories.FirstOrDefault ( x => x.UltimaCategoria==true );
+        }
+
     }
 }
