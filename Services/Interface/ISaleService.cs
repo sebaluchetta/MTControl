@@ -7,7 +7,8 @@ namespace MTControl.Services.Interface
     {
         List<Sale> GetSales ();
         Sale GetSaleById ( int id );
-        List<Sale> GetSalesbyProfile (int profile_cod);
+        List<Sale> GetSalesbyProfile (Profile profile);
+        decimal GetTotalSalesAmount ( Profile profile );
 
     }
 

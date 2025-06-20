@@ -7,7 +7,8 @@ namespace MTControl.Services.Interface
     {
         List<Purchase> GetPurchases ();
         Purchase GetPurchaseById ( int id );
-        List<Purchase> GetPurchasesbyProfile (int profile_cod);
+        List<Purchase> GetPurchasesbyProfile (Profile profile);
+        decimal GetTotalPurchasesAmount ( Profile profile );
 
     }
 

@@ -3,9 +3,9 @@
     public class Result
     {
         public Profile Profile { get; set; }
-        public decimal TopeCat { get; set; }
-        public decimal TopeReg { get; set; }
-        public decimal RelComprasVentas { get; set; }
+        public string TopeCat { get; set; }
+        public string TopeReg { get; set; }
+        public string RelComprasVentas { get; set; }
     }
 
 }

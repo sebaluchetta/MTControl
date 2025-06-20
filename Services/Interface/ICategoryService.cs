@@ -7,5 +7,6 @@ namespace MTControl.Services.Interface
     {
         List<Category> GetCategories ();
         Category GetCategoryById ( int id );
+        Category GetMaxCategory();
     }
 }
