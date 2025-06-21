@@ -1,6 +1,7 @@
 ﻿using MTControl.Services.Interface;
 using MTControl.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 namespace MTControl.Services
 {
     public class ProfileService : IProfilesService
@@ -11,6 +12,11 @@ namespace MTControl.Services
         {
             _context = context;
         }
+        #region GETTERS
+        /// <summary>
+        /// Obtiene la lista de perfiles con sus respectivas actividades y categorías.
+        /// </summary>
+        /// <returns></returns>
         public List<Profile> GetProfiles ()
         {
             List<Profile> _profiles = new List<Profile> ();
@@ -24,6 +30,11 @@ namespace MTControl.Services
             //_profiles.ForEach ( x => x.Compras = GetTotalPurchasesAmount ( x ) );
             return _profiles;
         }
+        /// <summary>
+        ///Obtiene un perfil por su ID, incluyendo sus actividades y categorías.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Profile GetProfileById ( int id )
         {
             Profile pro = _context.Profiles
@@ -37,18 +48,43 @@ namespace MTControl.Services
 
             return pro;
         }
+        /// <summary>
+        /// Obtiene una lista de perfiles activos
+        /// </summary>
+        /// <returns></returns>
+        public List<Profile>GetActiveProfiles ()
+        {
+            return GetProfiles().Where(x=>x.Activo == true ).ToList ();
+        }
+        #endregion
+
+        #region CRUD
+        /// <summary>
+        /// Crea un nuevo perfil y lo guarda en la base de datos.
+        /// </summary>
+        /// <param name="profile"></param>
+        /// <returns></returns>
         public Profile CreateProfile ( Profile profile )
         {
             _context.Profiles.Add ( profile );
             _context.SaveChanges ();
             return profile;
         }
+        /// <summary>
+        /// Actualiza un perfil existente en la base de datos.
+        /// </summary>
+        /// <param name="profile"></param>
+        /// <returns></returns>
         public Profile UpdateProfile ( Profile profile )
         {
             _context.Profiles.Update ( profile );
             _context.SaveChanges ();
             return profile;
         }
+        /// <summary>
+        /// Elimina un perfil de la base de datos por su ID.
+        /// </summary>
+        /// <param name="id"></param>
         public void DeleteProfile ( int id )
         {
             var profile = _context.Profiles.FirstOrDefault ( p => p.Codigo == id );
@@ -58,6 +94,12 @@ namespace MTControl.Services
                 _context.SaveChanges ();
             }
         }
+        #endregion
+        /// <summary>
+        /// Busca perfiles por un término de búsqueda en varios campos, incluyendo Código, Razón Social, CUIT, Categoría y Actividad.
+        /// </summary>
+        /// <param name="busqueda"></param>
+        /// <returns></returns>
         public List<Profile> SearchProfiles (string busqueda)
         {
             List<Profile> _profiles = new List<Profile> ();

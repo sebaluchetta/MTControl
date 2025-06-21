@@ -1,0 +1,26 @@
+﻿
+<form asp-controller="Report" asp-action="CalculateReport" method="Get">
+    <div class="container align-self-lg-center align-items-center">
+
+        <div class="row align-items-center mt-5">
+            <div class="card shadow mt-5">
+                <div class="card-body mt-5">
+                    <div class="row text-center ">
+                        <h5>Puede ejecutar el informe haciendo clic aquí:</h5>
+                    </div>
+                    <div class="row align-items-center ">
+                        <div class="col-2 offset-5 mt-5 mb-5">
+
+                            <a class="btn btn-outline-dark  center" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a Excel Perfil" asp-controller="Report" asp-action="CalculateReport">
+                                <i class="bi bi-file-spreadsheet-fill">
+                                    <p class="d-none d-md-block d-lg-inline"> Generar Reporte</p>
+                                </i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
