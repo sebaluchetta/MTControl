@@ -58,7 +58,7 @@ else
                             {
                                 <tr>
                                     <td class="g-1">
-                                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Editar perfil" asp-controller="Profile" asp-action="editar">
+                                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar perfil" asp-controller="Profile" asp-action="Editar" asp-route-Codigo="@result.Profile.Codigo">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
                                     </td>
@@ -69,10 +69,10 @@ else
                                     <td>@result.Profile.Categoria.Letra</td>
                                     <td>@result.Profile.Iibb.ToString( "C", new System.Globalization.CultureInfo ( "es-AR" ) )</td>
                                     <td>@result.Profile.Compras.ToString( "C", new System.Globalization.CultureInfo ( "es-AR" ) )</td>
-                                   
+
                                     <td>@result.TopeCat</td>
                                     <td>@result.TopeReg</td>
-                                    <td>@result.RelComprasVentas</td>
+                                    <td class=" fs-6">@result.RelComprasVentas</td>
                                 </tr>
                             }
                         </tbody>

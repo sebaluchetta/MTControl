@@ -59,7 +59,8 @@ namespace MTControl.Services
         /// <returns></returns>
         public decimal GetTotalSalesAmount(Profile profile )
         {
-            return GetSalesbyProfile(profile).Sum( (x => x.Total) );
+            decimal TotalSalesAmount = GetSalesbyProfile ( profile ).Sum ( (x => x.Total) );
+            return TotalSalesAmount;
         }
     }
 }

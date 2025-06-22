@@ -30,7 +30,7 @@ public partial class Profile
     [Display ( Name = "Compras del periodo" )]
     public decimal Compras { get; set; }
 
-    public bool? Activo { get; set; }
+    public bool Activo { get; set; }
     public virtual Activity? Actividad { get; set; }
     public virtual Category? Categoria { get; set; }
 

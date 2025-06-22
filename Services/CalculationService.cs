@@ -1,6 +1,7 @@
 ﻿using MTControl.Services.Interface;
 using MTControl.Models;
 using System.ComponentModel;
+using Microsoft.AspNetCore.Html;
 
 namespace MTControl.Services
 {
@@ -25,9 +26,9 @@ namespace MTControl.Services
                 Result result = new Result
                 {
                     Profile = profile,
-                    TopeCat = GetTopeCatResult ( profile ),
-                    TopeReg = GeTotTopeRegResult ( profile, MaxCat ),
-                    RelComprasVentas = GetRelComprasVentasResult ( profile )
+                    TopeCat = new HtmlString(GetTopeCatResult ( profile )),
+                    TopeReg = new HtmlString(GeTotTopeRegResult ( profile, MaxCat )),
+                    RelComprasVentas = new HtmlString ( GetRelComprasVentasResult ( profile ) )
                 };
                 results.Add ( result );
             }
@@ -44,7 +45,7 @@ namespace MTControl.Services
         {
             decimal ventas = profile.Iibb;
             decimal compras = profile.Compras;
-            decimal ratio = ventas != 0 ? compras / ventas * 100m : 0m;
+            decimal ratio = Math.Round(ventas != 0 ? compras / ventas * 100m : 0m,2);
             decimal limite = profile.Actividad.Porcentaje;
 
             if (ratio <= limite)

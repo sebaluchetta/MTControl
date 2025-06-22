@@ -17,6 +17,8 @@ namespace MTControl.Controllers
         private readonly IProfilesService _profilesService;
         private readonly ICategoryService _categoryService;
         private readonly IActivityService _activityService;
+        private readonly IPurchaseService _purchaseSercice;
+        private readonly ISaleService _saleService;
 
 
         public ProfileController ( MtcontrolContext _context )
@@ -25,6 +27,8 @@ namespace MTControl.Controllers
             _profilesService = new ProfileService ( _context );
             _categoryService = new CategoryService ( _context );
             _activityService = new ActivityService ( _context );
+            _purchaseSercice = new PurchaseService ( _context );
+            _saleService = new SaleService ( _context );
         }
 
         /// <summary>
@@ -162,6 +166,22 @@ namespace MTControl.Controllers
 
             };
             return _proVM;
+        }
+        [HttpPost]
+        public IActionResult ObtenerVentas ( Profile perfil )
+        {
+            decimal totalVentas = _saleService.GetTotalSalesAmount ( perfil );
+            perfil.Iibb = totalVentas;
+            _profileVM = CrearProvileVM ( perfil );
+            return View ( "ProfileU", _profileVM );
+        }
+        [HttpPost]
+        public IActionResult ObtenerCompras ( Profile perfil )
+        {
+            decimal totalCompras = _purchaseSercice.GetTotalPurchasesAmount ( perfil );
+            perfil.Compras=totalCompras;
+            _profileVM = CrearProvileVM ( perfil );
+            return View ( "ProfileU", _profileVM );
         }
         #endregion
     }
