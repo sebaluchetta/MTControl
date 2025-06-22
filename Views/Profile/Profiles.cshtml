@@ -22,7 +22,7 @@
 
             </div>
             <div class="col">
-                <a class="btn btn-outline-dark" id="BtnExpPdf" ="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="Profile" asp-action="ExpPDF">
+                <a class="btn btn-outline-dark disabled" id="BtnExpPdf" ="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="Profile" asp-action="ExpPDF">
                     <i class="bi bi-file-earmark-pdf-fill">
 
                         <p class="d-none d-md-block d-lg-inline">Exportar a PDF</p>
@@ -78,15 +78,15 @@
                         </td>
                         <td>@pro.Codigo</td>
                         <td>@pro.RazonSocial</td>
-                        <td>@pro.Cuit</td>
+                        <td>@pro.Cuit.Substring( 0, 2 )-@pro.Cuit.Substring( 2, 8 )-@pro.Cuit.Substring( 10, 1 )</td>
                         <td>@pro.Actividad.Descripcion</td>
                         <td>@pro.Categoria.Letra</td>
-                        <td>@pro.Iibb.ToString( "C", new System.Globalization.CultureInfo ( "es-AR" ) )</td>
-                        <td>@pro.Compras.ToString( "C", new System.Globalization.CultureInfo ( "es-AR" ) )</td>
+                        <td>@pro.Iibb.ToString( "C", new System.Globalization.CultureInfo( "es-AR" ) )</td>
+                        <td>@pro.Compras.ToString( "C", new System.Globalization.CultureInfo( "es-AR" ) )</td>
                         <td>
                             <div class="col-12 col-lg-6 mt-lg-3">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked disabled>
+                                    <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked="@pro.Activo" disabled>
                                 </div>
                         </td>
 

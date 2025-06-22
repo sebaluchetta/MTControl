@@ -1,22 +1,28 @@
 ﻿
-document.getElementById('BtnExpPdf').addEventListener('click', () => {
-    const element = document.getElementById('ProfileTable');
-    const opt = {
-        margin:       0.5,
-    filename:     'Perfiles.pdf',
-    image:        {type: 'jpeg', quality: 0.98 },
-    html2canvas:  {scale: 2 },
-    jsPDF:        {unit: 'in', format: 'a4', orientation: 'landscape' }
-    };
-    // Genera y descarga
-    html2pdf().set(opt).from(element).save();
-});
+//Valido para ProfileCR y ProfileU 
+//Mantiene el label del toggle actualizado segun el valor del toggle
+if (document.getElementById('ToggleActivo') && document.getElementById('ToggleLabel')) {
+    function ActualizarToggleLabel() {
+        let ToggleLabel = "";
+        let ToggleValue = false;
+        ToggleValue = document.getElementById('ToggleActivo').checked;
+        document.getElementById('ToggleLabel').innerText= ToggleValue ? 'Activo' : 'Inactivo';
+    }
+    document.addEventListener('DOMContentLoaded', ActualizarToggleLabel);
+    document.getElementById('ToggleActivo')
+        .addEventListener('change', ActualizarToggleLabel);
 
-function Limpiar() {
-    document.getElementById('InputBuscar').value = '';
+}
+//Valido para Profile
+//Limpia el input del buscador al hacer clic en el boton de limpiar
+if (document.getElementById('InputBuscar') && document.getElementById('BtnLimpiar')) {
+    function Limpiar() {
+        document.getElementById('InputBuscar').value = '';
+    }
+    document.getElementById('BtnLimpiar')
+        .addEventListener('click', () => {
+            Limpiar();
+        });
 }
 
-document.getElementById('BtnLimpiar').addEventListener('click', () => {
-    Limpiar();
-});
 

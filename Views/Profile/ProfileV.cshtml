@@ -49,8 +49,8 @@
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked name="Activo" />
-                        <label class="form-check-label" for="ToggleActivo">Activo</label>
+                        <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo"  value="true" name="Activo" @Model.Activo? "checked":""/>
+                        <label class="form-check-label" for="ToggleActivo"> @(Model.Activo ? "Activo" : "Inactivo")</label>
                     </div>
                 </div>
 
@@ -58,7 +58,7 @@
 </fieldset>
 <div class="row row-cols-auto g-4 mt-3">
     <div class="col-4">
-        <button type="button" class="btn btn-outline-dark" id="BtnCancelar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Volver" onclick="history.back()">
+        <button type="button" class="btn btn-outline-dark" id="BtnCancelar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Volver" onclick="history.back">
             <i class="bi bi-box-arrow-left"></i>
             <p class="d-none d-md-block d-lg-inline"> Volver</p>
         </button>
