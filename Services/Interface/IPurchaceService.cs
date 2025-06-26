@@ -9,7 +9,7 @@ namespace MTControl.Services.Interface
         Purchase GetPurchaseById ( int id );
         List<Purchase> GetPurchasesbyProfile (Profile profile);
         decimal GetTotalPurchasesAmount ( Profile profile );
-
+      void DeletePurchases(List<Purchase> PurchasesToDelete);
     }
 
 }

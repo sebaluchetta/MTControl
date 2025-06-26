@@ -63,5 +63,14 @@ namespace MTControl.Services
 
             return TotalPurchasesAmount;
         }
+        /// <summary>
+        /// Elimina las compras de un perfil.
+        /// </summary>
+        /// <param name="PurchasesToDelete"></param>
+        public void DeletePurchases ( List<Purchase> PurchasesToDelete )
+        {
+            _context.Purchases.RemoveRange ( PurchasesToDelete );
+            _context.SaveChanges ();
+        }
     }
 }

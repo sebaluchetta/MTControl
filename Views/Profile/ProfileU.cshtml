@@ -1,5 +1,6 @@
 ﻿@model ProfileVM
 <h1 class="text-center mb-5 text-decoration-underline">Editar Perfil</h1>
+<partial name="_AlertPartial" />
 <div asp-validation-summary="All">
     <form asp-action="Guardar" method="post" id="EditarPerfilForm">
         <div class="container-fluid">
@@ -10,6 +11,7 @@
                     <input type="text" class="form-control" name="RazonSocial" asp-for="_profile.RazonSocial" value=" @Model._profile.RazonSocial">
                     <span data-valmsg-for="RazonSocial" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
+               
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCUIT" class="form-label">CUIT</label>
                     <input type="number" class="form-control" name="Cuit" asp-for="_profile.Cuit" value="@Model._profile.Cuit">

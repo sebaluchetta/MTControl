@@ -9,6 +9,7 @@ namespace MTControl.Services.Interface
         Sale GetSaleById ( int id );
         List<Sale> GetSalesbyProfile (Profile profile);
         decimal GetTotalSalesAmount ( Profile profile );
+        void DeleteSales(List<Sale> SalesToDelete);
 
     }
 

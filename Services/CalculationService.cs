@@ -68,11 +68,11 @@ namespace MTControl.Services
         {
             if (profile.Iibb <= maxCat.IngresosBrutosCategoria)
             {
-                return $"<i class=\"bi bi-check-circle-fill alert-success\"></i>Los ingresos brutos del periodo (${profile.Iibb}) no superan el límite del régimen (${maxCat.IngresosBrutosCategoria}).";
+                return $"<i class=\"bi bi-check-circle-fill alert-success\"></i>Los ingresos brutos del periodo ({profile.Iibb.ToString("C", new System.Globalization.CultureInfo("es-AR"))}) no superan el límite del régimen ({maxCat.IngresosBrutosCategoria.ToString("C", new System.Globalization.CultureInfo("es-AR"))}).";
             }
             else
             {
-                return $"<i class=\"bi bi-x-circle-fill alert-danger\"></i>Los ingresos brutos del periodo (${profile.Iibb}) superan el límite del régimen (${maxCat.IngresosBrutosCategoria}), por lo tanto se encuentra excluído del régimen.";
+                return $"<i class=\"bi bi-x-circle-fill alert-danger\"></i>Los ingresos brutos del periodo ({profile.Iibb.ToString("C", new System.Globalization.CultureInfo("es-AR"))}) superan el límite del régimen ({maxCat.IngresosBrutosCategoria.ToString("C", new System.Globalization.CultureInfo("es-AR"))}), por lo tanto se encuentra excluído del régimen.";
             }
 
         }
@@ -83,18 +83,18 @@ namespace MTControl.Services
         /// <returns></returns>
         private string GetTopeCatResult ( Profile profile )
         {
-            if (profile.FechaInicioActividades.AddMonths ( 6 ) <= DateOnly.FromDateTime ( DateTime.Now ))
+            if (profile.FechaInicioActividades.AddMonths ( 6 ) >= DateOnly.FromDateTime ( DateTime.Now ))
             {
                 return "<i class=\"bi bi-check-circle-fill alert-success\"></i>El perfil no puede ser evaluado, ya que la fecha de inicio de actividades es menor a 6 meses.";
             }
             if (profile.Iibb <= profile.Categoria.IngresosBrutosCategoria)
             {
-                return $"<i class=\"bi bi-check-circle-fill alert-success\"></i>Los ingresos brutos del periodo (${profile.Iibb}) no superan el límite de la categoría {profile.Categoria.Letra} (${profile.Categoria.IngresosBrutosCategoria}).";
+                return $"<i class=\"bi bi-check-circle-fill alert-success\"></i>Los ingresos brutos del periodo ({profile.Iibb.ToString("C", new System.Globalization.CultureInfo("es-AR"))}) no superan el límite de la categoría {profile.Categoria.Letra} ({profile.Categoria.IngresosBrutosCategoria.ToString("C", new System.Globalization.CultureInfo("es-AR"))}).";
 
             }
             else
             {
-                return $"<i class=\"bi bi-check-circle-fill alert-danger\"></i>Los ingresos brutos del periodo (${profile.Iibb}) superan el límite de la categoría {profile.Categoria.Letra} (${profile.Categoria.IngresosBrutosCategoria}).";
+                return $"<i class=\"bi bi-check-circle-fill alert-danger\"></i>Los ingresos brutos del periodo ({profile.Iibb}) superan el límite de la categoría {profile.Categoria.Letra} ({profile.Categoria.IngresosBrutosCategoria.ToString("C", new System.Globalization.CultureInfo("es-AR"))}).";
 
             }
 
