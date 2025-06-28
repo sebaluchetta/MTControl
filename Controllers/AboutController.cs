@@ -2,9 +2,9 @@ using System.Diagnostics;
 
 using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Mvc;
-using MTControl.Models;
 using MTControl.Services.Interface;
 using MTControl.Services;
+using MTControl.DAL;
 
 namespace MTControl.Controllers
 {

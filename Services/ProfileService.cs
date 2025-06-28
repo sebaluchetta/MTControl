@@ -3,19 +3,18 @@ using MTControl.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using System.Security.AccessControl;
+using MTControl.DAL;
 namespace MTControl.Services
 {
     public class ProfileService : IProfilesService
     {
 
         private readonly MtcontrolContext _context;
-        private readonly IPurchaseService _purchaseSercice;
-        private readonly ISaleService _saleService;
+      
         public ProfileService ( MtcontrolContext context )
         {
             _context = context;
-            _purchaseSercice = new PurchaseService(_context);
-            _saleService = new SaleService(_context);
+           
         }
         #region GETTERS
         /// <summary>
@@ -84,8 +83,10 @@ namespace MTControl.Services
         /// Elimina un perfil de la base de datos por su ID.
         /// </summary>
         /// <param name="id"></param>
-        public void DeleteProfile ( int id )
+        public void DeleteProfile ( int id, ISaleService saleService, IPurchaseService purchaseService)
         {
+             ISaleService _saleService = saleService;
+            IPurchaseService _purchaseSercice = purchaseService;
             var profile = _context.Profiles.FirstOrDefault ( p => p.Codigo == id );
             if (profile != null)
             {

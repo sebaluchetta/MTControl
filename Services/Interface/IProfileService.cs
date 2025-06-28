@@ -11,7 +11,7 @@ namespace MTControl.Services.Interface
         Profile GetProfileById ( int id );
         Profile CreateProfile ( Profile profile );
         Profile UpdateProfile ( Profile profile );
-        void DeleteProfile ( int id );
+        void DeleteProfile ( int id, ISaleService saleService, IPurchaseService purchaseService );
 
         
     }

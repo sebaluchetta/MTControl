@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using Microsoft.EntityFrameworkCore;
 
-namespace MTControl.Models;
+using MTControl.Models;
+
+namespace MTControl.DAL;
 
 public partial class MtcontrolContext : DbContext
 {

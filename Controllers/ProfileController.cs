@@ -2,6 +2,7 @@ using System.Diagnostics;
 
 using Microsoft.AspNetCore.Mvc;
 
+using MTControl.DAL;
 using MTControl.Models;
 using MTControl.Services;
 using MTControl.Services.Interface;
@@ -12,7 +13,7 @@ namespace MTControl.Controllers
     {
 
         private List<Profile> _perfiles = new ();
-        private readonly MtcontrolContext _DBcontext;
+     
         private ProfileVM _profileVM;
         private readonly IProfilesService _profilesService;
         private readonly ICategoryService _categoryService;
@@ -21,14 +22,19 @@ namespace MTControl.Controllers
         private readonly ISaleService _saleService;
 
 
-        public ProfileController ( MtcontrolContext _context )
+        public ProfileController (IProfilesService profilesService
+                                , ICategoryService categoryService
+                                , IActivityService activityService
+                                , IPurchaseService purchaseSercice
+                                , ISaleService saleService
+                                 )
         {
-            _DBcontext = _context;
-            _profilesService = new ProfileService ( _context );
-            _categoryService = new CategoryService ( _context );
-            _activityService = new ActivityService ( _context );
-            _purchaseSercice = new PurchaseService ( _context );
-            _saleService = new SaleService ( _context );
+         
+            _profilesService = profilesService;
+            _categoryService = categoryService;
+            _activityService = activityService;
+            _purchaseSercice = purchaseSercice;
+            _saleService = saleService;
         }
 
         /// <summary>
@@ -130,8 +136,9 @@ namespace MTControl.Controllers
         public IActionResult Borrar ( int codigo )
         {
 
-            _profilesService.DeleteProfile ( codigo );
-
+            _profilesService.DeleteProfile ( codigo, _saleService, _purchaseSercice );
+            TempData [ "Mensaje" ] = $"El Perfil fue eliminado correctamente.";
+            TempData [ "MensajeColor" ] = "alert alert-success alert-dismissible";
 
             return RedirectToAction ( "Profiles", "profile" );
         }
@@ -179,7 +186,7 @@ namespace MTControl.Controllers
         public IActionResult ObtenerCompras ( Profile perfil )
         {
             decimal totalCompras = _purchaseSercice.GetTotalPurchasesAmount ( perfil );
-            perfil.Compras=totalCompras;
+            perfil.Compras = totalCompras;
             _profileVM = CrearProvileVM ( perfil );
             return View ( "ProfileU", _profileVM );
         }

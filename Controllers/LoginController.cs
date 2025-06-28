@@ -1,7 +1,9 @@
 using System.Diagnostics;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MTControl.Models;
+
+using MTControl.DAL;
 using MTControl.Services;
 using MTControl.Services.Interface;
 
