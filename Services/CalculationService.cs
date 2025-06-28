@@ -2,16 +2,14 @@
 using MTControl.Models;
 using System.ComponentModel;
 using Microsoft.AspNetCore.Html;
+using MTControl.DAL;
 
 namespace MTControl.Services
 {
     public class CalculationService : ICalculationService
     {
-        private readonly MtcontrolContext _context;
-        public CalculationService ( MtcontrolContext context )
-        {
-            _context = context;
-        }
+       
+       
         /// <summary>
         /// Calcula los resultados para cada perfil en base a las categorías y actividades asignadas, y devuelve una lista de resultados.
         /// </summary>
@@ -35,7 +33,7 @@ namespace MTControl.Services
             return results;
         }
 
-        #region Private
+        #region Calculos
         /// <summary>
         /// Calcula la relación entre compras y ventas del perfil, lo compara con el % legal y devuelve un mensaje con el resultado.
         /// </summary>
