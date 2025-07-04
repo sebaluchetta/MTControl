@@ -3,7 +3,6 @@ using MTControl.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using System.Security.AccessControl;
-using MTControl.DAL;
 namespace MTControl.Services
 {
     public class ProfileService : IProfilesService

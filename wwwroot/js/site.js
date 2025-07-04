@@ -1,5 +1,5 @@
 ﻿
-//Valido para ProfileCR y ProfileU 
+//Valido para ProfileC y ProfileU 
 //Mantiene el label del toggle actualizado segun el valor del toggle
 if (document.getElementById('ToggleActivo') && document.getElementById('ToggleLabel')) {
     function ActualizarToggleLabel() {

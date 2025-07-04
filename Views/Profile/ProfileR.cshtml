@@ -13,27 +13,35 @@
 
                 <div class=" col-12 col-lg-6 ">
                     <label for="inputRazonSocial" class="form-label">Razón Social</label>
-                    <input type="text" class="form-control" id="inputRazonSocial" name="RazonSocial" value="@Model.RazonSocial">
+                    <input type="text" class="form-control" id="inputRazonSocial" asp-for="RazonSocial" value="@Model.RazonSocial">
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCUIT" class="form-label">CUIT</label>
-                    <input type="number" class="form-control" id="inputCUIT" name="Cuit" value="@Model.Cuit" />
+                    <input type="number" class="form-control" id="inputCUIT" asp-for="Cuit" value="@Model.Cuit" />
+                </div>
+                <div class="col-12 col-lg-6 mt-lg-3">
+
+                    @if (!string.IsNullOrEmpty (Model.Constancia ))
+                    {
+                        <label for="inputConstaciaactual" class="form-label">Constancia inscripción ARCA:</label>
+                        <input type="text" class="form-control" asp-for="@Model.Constancia" value="@Model.Constancia" readonly>
+                    }
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputFiActividades" class="form-label">Fecha inicio de actividades</label>
-                    <input type="date" class="form-control" id="inputFiActividades" name="FechaInicioActividades" value="@Model.FechaInicioActividades.ToString("yyyy-MM-dd")">
+                    <input type="date" class="form-control" id="inputFiActividades" asp-for="FechaInicioActividades" value="@Model.FechaInicioActividades.ToString( "yyyy-MM-dd" )">
                 </div>
 
 
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCategoria" class="form-label">Categoria</label>
-                    <select id="inputCategoria" class="form-select" name="Categoria">
+                    <select id="inputCategoria" class="form-select" asp-for="Categoria">
                         <option selected disabled value="Model.CategoriaID">@Model.Categoria.Letra</option>
                     </select>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputActividad" class="form-label">Actividad Principal</label>
-                    <select id="inputCategoria" class="form-select" name="Actividad">
+                    <select id="inputCategoria" class="form-select" asp-for="Actividad">
                         <option selected disabled value="Model.ActividadId">@Model.Actividad.Descripcion</option>
 
 
@@ -41,15 +49,15 @@
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputIIBB" class="form-label">Ingresos brutos totales últimos 12 meses</label>
-                    <input type="text" class="form-control" id="inputIIBB" name="Iibb" value="@Model.Iibb.ToString("C", new System.Globalization.CultureInfo("es-AR"))">
+                    <input type="text" class="form-control" id="inputIIBB" asp-for="Iibb" value="@Model.Iibb.ToString( "C", new System.Globalization.CultureInfo( "es-AR" ) )">
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCompras" class="form-label">Compras totales últimos 12 meses</label>
-                    <input type="text" class="form-control" id="inputCompras" name="Compras" value="@Model.Compras.ToString("C", new System.Globalization.CultureInfo("es-AR"))">
+                    <input type="text" class="form-control" id="inputCompras" asp-for="Compras" value="@Model.Compras.ToString( "C", new System.Globalization.CultureInfo( "es-AR" ) )">
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo"  value="true" name="Activo" @Model.Activo? "checked":""/>
+                        <input class="form-check-input" type="checkbox" role="switch" asp-for="@Model.Activo" checked="@Model.Activo" disabled />
                         <label class="form-check-label" for="ToggleActivo"> @(Model.Activo ? "Activo" : "Inactivo")</label>
                     </div>
                 </div>

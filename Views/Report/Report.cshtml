@@ -1,4 +1,4 @@
-﻿ @model List<Result>
+﻿@model List<Result>
 @if (Model is null)
 {
     <partial name="_ResultEmptyStatePartial" />
@@ -42,17 +42,21 @@ else
                 </div>
                 <div class="table-responsive mt-1">
                     <table class="table table-bordered table-striped table-hover ">
-                        <th>Acción</th>
-                        <th>Código</th>
-                        <th>Razón social</th>
-                        <th>CUIT</th>
-                        <th>Actividad</th>
-                        <th>Categoria</th>
-                        <th>IIBB Umos 12 meses</th>
-                        <th>Compras Umos 12 meses</th>
-                        <th>Control tope categoria</th>
-                        <th>Control tope Régimen</th>
-                        <th>Control Relacion compras/ventas</th>
+                        <thead>
+                            <tr>
+                                <th>Acción</th>
+                                <th>Código</th>
+                                <th>Razón social</th>
+                                <th>CUIT</th>
+                                <th>Actividad</th>
+                                <th>Categoria</th>
+                                <th>IIBB Umos 12 meses</th>
+                                <th>Compras Umos 12 meses</th>
+                                <th>Control tope categoria</th>
+                                <th>Control tope Régimen</th>
+                                <th>Control Relacion compras/ventas</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             @foreach (Result result in Model)
                             {
@@ -67,8 +71,8 @@ else
                                     <td>@result.Profile.Cuit.Substring( 0, 2 )-@result.Profile.Cuit.Substring( 2, 8 )-@result.Profile.Cuit.Substring( 10, 1 )</td>
                                     <td>@result.Profile.Actividad.Descripcion</td>
                                     <td>@result.Profile.Categoria.Letra</td>
-                                    <td>@result.Profile.Iibb.ToString("C", new System.Globalization.CultureInfo("es-AR"))</td>
-                                    <td>@result.Profile.Compras.ToString("C", new System.Globalization.CultureInfo("es-AR"))</td>
+                                    <td>@result.Profile.Iibb.ToString( "C", new System.Globalization.CultureInfo( "es-AR" ) )</td>
+                                    <td>@result.Profile.Compras.ToString( "C", new System.Globalization.CultureInfo( "es-AR" ) )</td>
 
                                     <td>@result.TopeCat</td>
                                     <td>@result.TopeReg</td>

@@ -5,52 +5,60 @@
 
 <partial name="_AlertPartial" />
 
-<form asp-action="Borrar" method="post" id="EditarPerfilForm">
+<form asp-action="Borrar" method="post" id="EliminarPerfilForm"  novalidate>
 
     <div class="container-fluid">
         <div class="container-fluid">
-            <input type="text" class="form-control" id="inputCodigo" name="Codigo" hidden value="@Model.Codigo">
+         
+            <input asp-for="Codigo" type="hidden" />
 
             <div class=" col-12 col-lg-6 ">
                 <label for="inputRazonSocial" class="form-label">Razón Social</label>
-                <input type="text" class="form-control" id="inputRazonSocial" name="RazonSocial" value="@Model.RazonSocial" readonly>
+                <input type="text" class="form-control"  asp-for="RazonSocial" value="@Model.RazonSocial" disabled>
             </div>
             <div class="col-12 col-lg-6 mt-lg-3">
                 <label for="inputCUIT" class="form-label">CUIT</label>
-                <input type="number" class="form-control" id="inputCUIT" name="Cuit" value="@Model.Cuit" readonly />
+                <input type="number" class="form-control"  asp-for="Cuit" value="@Model.Cuit" disabled />
+            </div>
+            <div class="col-12 col-lg-6 mt-lg-3">
+
+                @if (!string.IsNullOrEmpty ( Model.Constancia ))
+                {
+                    <label for="inputConstaciaactual" class="form-label">Constancia inscripción ARCA:</label>
+                    <input type="text" class="form-control" asp-for="@Model.Constancia" value="@Model.Constancia" disabled>
+                }
             </div>
             <div class="col-12 col-lg-6 mt-lg-3">
                 <label for="inputFiActividades" class="form-label">Fecha inicio de actividades</label>
-                <input type="date" class="form-control" id="inputFiActividades" name="FechaInicioActividades" value="@Model.FechaInicioActividades.ToString("yyyy-MM-dd")" readonly>
+                <input type="date" class="form-control" name="FechaInicioActividades" value="@Model.FechaInicioActividades.ToString( "yyyy-MM-dd" )" disabled>
             </div>
 
 
             <div class="col-12 col-lg-6 mt-lg-3">
                 <label for="inputCategoria" class="form-label">Categoria</label>
-                <select id="inputCategoria" class="form-select" name="Categoria" disabled>
-                    <option  selected  value="Model.CategoriaID">@Model.Categoria.Letra</option>
+                <select id="inputCategoria" class="form-select" asp-for="Categoria" disabled>
+                    <option selected value="Model.CategoriaID">@Model.Categoria.Letra</option>
                 </select>
             </div>
             <div class="col-12 col-lg-6 mt-lg-3">
                 <label for="inputActividad" class="form-label">Actividad Principal</label>
-                <select id="inputCategoria" class="form-select" name="Actividad" disabled>
-                    <option  selected  value="Model.ActividadId">@Model.Actividad.Descripcion</option>
-
+                <select  class="form-select" asp-for="Actividad" disabled>
+                    <option selected value="Model.ActividadId">@Model.Actividad.Descripcion</option>
 
                 </select>
             </div>
             <div class="col-12 col-lg-6 mt-lg-3">
                 <label for="inputIIBB" class="form-label">Ingresos brutos totales últimos 12 meses</label>
-                <input type="text" class="form-control" id="inputIIBB" name="Iibb" value="@Model.Iibb.ToString("C", new System.Globalization.CultureInfo("es-AR"))" readonly>
+                <input type="text" class="form-control" asp-for="Iibb" value="@Model.Iibb.ToString( "C", new System.Globalization.CultureInfo( "es-AR" ) )" disabled>
             </div>
             <div class="col-12 col-lg-6 mt-lg-3">
                 <label for="inputCompras" class="form-label">Compras totales últimos 12 meses</label>
-                <input type="text" class="form-control" id="inputCompras" name="Compras" value="@Model.Compras.ToString("C", new System.Globalization.CultureInfo("es-AR"))" readonly>
+                <input type="text" class="form-control" asp-for="Compras" value="@Model.Compras.ToString( "C", new System.Globalization.CultureInfo( "es-AR" ) )" disabled>
             </div>
             <div class="col-12 col-lg-6 mt-lg-3">
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="ToggleActivo" checked name="Activo" readonly />
-                    <label class="form-check-label" for="ToggleActivo">Activo</label>
+                    <input class="form-check-input" type="checkbox" role="switch" asp-for="@Model.Activo" checked="@Model.Activo" disabled />
+                    <label class="form-check-label" for="ToggleActivo"> @(Model.Activo ? "Activo" : "Inactivo")</label>
                 </div>
             </div>
 
@@ -69,4 +77,4 @@
                 </div>
             </div>
 </form>
-</fieldset>
+

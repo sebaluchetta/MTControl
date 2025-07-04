@@ -1,46 +1,61 @@
 ﻿@model ProfileVM
+@{
+    var p = @Model;
+}
 <h1 class="text-center mb-5 text-decoration-underline">Editar Perfil</h1>
 <partial name="_AlertPartial" />
 <div asp-validation-summary="All">
-    <form asp-action="Guardar" method="post" id="EditarPerfilForm">
+    <form asp-action="Guardar" method="post" id="EditarPerfilForm" enctype="multipart/form-data">
         <div class="container-fluid">
             <div class="container-fluid">
-                <input type="text" class="form-control" id="inputCodigo" name="Codigo" hidden value="@Model._profile.Codigo">
+                <input type="text" class="form-control" id="inputCodigo" asp-for="_profile.Codigo" hidden value="@Model._profile.Codigo">
                 <div class=" col-12 col-lg-6 ">
                     <label for="inputRazonSocial" class="form-label">Razón Social</label>
-                    <input type="text" class="form-control" name="RazonSocial" asp-for="_profile.RazonSocial" value=" @Model._profile.RazonSocial">
-                    <span data-valmsg-for="RazonSocial" data-valmsg-replace="true" class="text-danger"></span>
+                    <input type="text" class="form-control" asp-for="_profile.RazonSocial" value=" @Model._profile.RazonSocial">
+                    <span data-valmsg-for="_profile.RazonSocial" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
-               
+
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCUIT" class="form-label">CUIT</label>
-                    <input type="number" class="form-control" name="Cuit" asp-for="_profile.Cuit" value="@Model._profile.Cuit">
-                    <span data-valmsg-for="Cuit" data-valmsg-replace="true" class="text-danger"></span>
+                    <input type="number" class="form-control" asp-for="_profile.Cuit" value="@Model._profile.Cuit">
+                    <span data-valmsg-for="_profile.Cuit" data-valmsg-replace="true" class="text-danger"></span>
+                </div>
+
+                <div class="col-12 col-lg-6 mt-lg-3">
+                    
+                    @if (!string.IsNullOrEmpty ( Model._profile.Constancia ))
+                    {
+                    <label for="inputConstaciaactual" class="form-label">Constancia inscripción ARCA actual:</label>
+                    <input type="text" class="form-control" asp-for="_profile.Constancia" value=" @Model._profile.Constancia" readonly>
+                    }
+                    <label for="inputConstacia" class="form-label">Constancia inscripción ARCA Nueva:</label>
+                    <input type="file" class="form-control" asp-for="DocumentoPDF" accept="application/pdf">
+                    <span data-valmsg-for="DocumentoPDF" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputFiActividades" class="form-label">Fecha inicio de actividades</label>
-                    <input type="date" class="form-control" name="FechaInicioActividades" asp-for="_profile.FechaInicioActividades" value="@Model._profile.FechaInicioActividades.ToString("yyyy-MM-dd")">
-                    <span data-valmsg-for="FechaInicioActividades" data-valmsg-replace="true" class="text-danger"></span>
+                    <input type="date" class="form-control" asp-for="_profile.FechaInicioActividades" value="@Model._profile.FechaInicioActividades.ToString( "yyyy-MM-dd" )">
+                    <span data-valmsg-for="_profile.FechaInicioActividades" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
 
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCategoria" class="form-label">Categoria</label>
-                    <select id="inputCategoria" class="form-select" name="CategoriaId" asp-for="_profile.CategoriaId" asp-items="@Model._categories.ToList()">
-                        <span data-valmsg-for="CategoriaId" data-valmsg-replace="true" class="text-danger"></span>
+                    <select id="inputCategoria" class="form-select" asp-for="_profile.CategoriaId" asp-items="@Model._categories.ToList ()">
                         <option disabled value="">
                             Seleccione una categoria
                         </option>
                     </select>
+                    <span data-valmsg-for="_profile.CategoriaId" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputActividad" class="form-label">Actividad Principal</label>
-                    <select id="inputActividad" class="form-select" name="ActividadId" asp-for="_profile.ActividadId" asp-items="@Model._activities.ToList()">
-                        <span data-valmsg-for="ActividadId" data-valmsg-replace="true" class="text-danger"></span>
+                    <select id="inputActividad" class="form-select" asp-for="_profile.ActividadId" asp-items="@Model._activities.ToList()">
                         <option disabled value="">
                             Seleccione una Actividad
                         </option>
 
                     </select>
+                    <span data-valmsg-for="_profile.ActividadId" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
                 <div class="row">
                     <div class="col-6 col-lg-6 mt-lg-3">
@@ -48,9 +63,9 @@
                     </div>
                     <div class="row">
                         <div class="col-6 col-lg-6 mt-lg-3">
-                            <input type="number" class="form-control" name="Iibb" asp-for="_profile.Iibb"
-                                   value="@Model._profile.Iibb.ToString("0.##", CultureInfo.InvariantCulture)" />
-                            <span data-valmsg-for="Iibb" data-valmsg-replace="true" class="text-danger"></span>
+                            <input type="number" class="form-control" asp-for="_profile.Iibb"
+                                   value="@Model._profile.Iibb.ToString( "0.##", CultureInfo.InvariantCulture )" />
+                            <span data-valmsg-for="_profile.Iibb" data-valmsg-replace="true" class="text-danger"></span>
                         </div>
                         <div class="col-6 col-lg-6 mt-lg-3">
                             <button type="submit" class="btn btn-outline-primary" id="BtnObtenerVentas" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Obtener Ventas" asp-controller="Profile" asp-action="ObtenerVentas">
@@ -65,8 +80,8 @@
                     </div>
                     <div class="row">
                         <div class="col-6 col-lg-6 mt-lg-3">
-                            <input type="number" class="form-control" name="Compras" asp-for="_profile.Compras" value="@Model._profile.Compras.ToString("0.##", CultureInfo.InvariantCulture)">
-                            <span data-valmsg-for="Compras" data-valmsg-replace="true" class="text-danger"></span>
+                            <input type="number" class="form-control"  asp-for="_profile.Compras" value="@Model._profile.Compras.ToString( "0.##", CultureInfo.InvariantCulture )">
+                            <span data-valmsg-for="_profile.Compras" data-valmsg-replace="true" class="text-danger"></span>
                         </div>
                         <div class="col-6 col-lg-6 mt-lg-3">
                             <button type="submit" class="btn btn-outline-primary" id="BtnObtenerCompras" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Obtener Compras" asp-controller="Profile" asp-action="ObtenerCompras">
@@ -77,8 +92,8 @@
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <div class="form-check form-switch">
-                        
-                        <input id="ToggleActivo" class="form-check-input" type="checkbox" role="switch" name="Activo" value="true" checked="@Model._profile.Activo" />
+
+                        <input id="ToggleActivo" class="form-check-input" type="checkbox" role="switch" asp-for="_profile.Activo" value="true" checked="@Model._profile.Activo" />
                         <label id="ToggleLabel" class="form-check-label" for="ToggleActivo">Activo</label>
                     </div>
                 </div>
@@ -89,7 +104,7 @@
                         <i class="bi bi-floppy2-fill"></i>
                         <p class="d-none d-md-block d-lg-inline"> Guardar</p>
                     </button>
-                    <button type="submit" class="btn btn-outline-dark" id="BtnCancelar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Cancelar" asp-controller="Profile" asp-action="Profiles" >
+                    <button type="submit" class="btn btn-outline-dark" id="BtnCancelar" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Cancelar" asp-controller="Profile" asp-action="Profiles">
                         <i class="bi bi-box-arrow-left"></i>
                         <p class="d-none d-md-block d-lg-inline"> Cancelar</p>
                     </button>
