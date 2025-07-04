@@ -6,7 +6,7 @@ namespace MTControl.Models;
 
 public partial class Profile
 {
-    public int Codigo { get; set ; }
+    public int Codigo { get; set; }
 
     [Required ( ErrorMessage = "El campo {0} es obligatorio" )]
     [Display ( Name = "Razón Social" )]
@@ -40,8 +40,9 @@ public partial class Profile
     public bool Activo { get; set; }
     public virtual Activity? Actividad { get; set; }
     public virtual Category? Categoria { get; set; }
+    public string? Constancia { get; set; }
 
-    public virtual ICollection<Purchase> Purchases { get; set; } = new List<Purchase>();
+    public virtual ICollection<Purchase> Purchases { get; set; } = new List<Purchase> ();
 
-    public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();
+    public virtual ICollection<Sale> Sales { get; set; } = new List<Sale> ();
 }

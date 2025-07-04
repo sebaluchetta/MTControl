@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Microsoft.EntityFrameworkCore;
 
-using MTControl.Models;
-
-namespace MTControl.DAL;
+namespace MTControl.Models;
 
 public partial class MtcontrolContext : DbContext
 {
+    public MtcontrolContext()
+    {
+    }
+
     public MtcontrolContext(DbContextOptions<MtcontrolContext> options)
         : base(options)
     {
@@ -25,6 +26,9 @@ public partial class MtcontrolContext : DbContext
     public virtual DbSet<Purchase> Purchases { get; set; }
 
     public virtual DbSet<Sale> Sales { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder.UseSqlServer("Name=ConexionSQL");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

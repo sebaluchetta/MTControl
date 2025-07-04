@@ -2,7 +2,7 @@ using System.Diagnostics;
 
 using Microsoft.AspNetCore.Mvc;
 
-using MTControl.DAL;
+using MTControl.Models;
 using MTControl.Services;
 using MTControl.Services.Interface;
 

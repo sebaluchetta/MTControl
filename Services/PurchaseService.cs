@@ -1,7 +1,6 @@
 ﻿using MTControl.Services.Interface;
 using MTControl.Models;
 using System.Linq;
-using MTControl.DAL;
 namespace MTControl.Services
 {
     public class PurchaseService : IPurchaseService

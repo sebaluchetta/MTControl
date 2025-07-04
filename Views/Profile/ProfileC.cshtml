@@ -1,53 +1,61 @@
 ﻿@model ProfileVM
+@{
+    var perfil = Model._profile;
+}
 <h1 class="text-center mb-5 text-decoration-underline">Nuevo Perfil</h1>
 <partial name="_AlertPartial" />
 <div asp-validation-summary="All">
-    <form asp-action="Guardar" method="post" id="NuevoPerfilForm">
+    <form asp-action="Guardar" method="post" id="NuevoPerfilForm" enctype="multipart/form-data">
         <div class="container-fluid">
             <div class="container-fluid">
                 <div class=" col-12 col-lg-6 ">
                     <label for="inputRazonSocial" class="form-label">Razón Social</label>
-                    <input type="text" class="form-control" name="RazonSocial" asp-for="_profile.RazonSocial">
-                    <span  data-valmsg-for="RazonSocial" data-valmsg-replace="true" class="text-danger"></span>
+                    <input type="text" class="form-control"  asp-for="_profile.RazonSocial">
+                    <span data-valmsg-for="_profile.RazonSocial" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCUIT" class="form-label">CUIT</label>
-                    <input type="number" class="form-control" name="Cuit" asp-for="_profile.Cuit">
-                    <span data-valmsg-for="Cuit" data-valmsg-replace="true" class="text-danger"></span>
+                    <input type="number" class="form-control" asp-for="_profile.Cuit">
+                    <span data-valmsg-for="_profile.Cuit" data-valmsg-replace="true" class="text-danger"></span>
+                </div>
+                <div class="col-12 col-lg-6 mt-lg-3">
+                    <label for="inputConstaci" class="form-label">Constancia inscripción ARCA</label>
+                    <input type="file" class="form-control"   asp-for="DocumentoPDF" accept="application/pdf">
+                    <span data-valmsg-for="DocumentoPDF" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputFiActividades" class="form-label">Fecha inicio de actividades</label>
-                    <input type="date" class="form-control" name="FechaInicioActividades" asp-for="_profile.FechaInicioActividades" value="">
-                    <span data-valmsg-for="FechaInicioActividades" data-valmsg-replace="true" class="text-danger"></span>
+                    <input type="date" class="form-control" asp-for="_profile.FechaInicioActividades" value="">
+                    <span data-valmsg-for="_profile.FechaInicioActividades" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCategoria" class="form-label">Categoria</label>
-                    <select name="CategoriaId" class="form-select" asp-items="Model._categories" asp-for="_profile.CategoriaId">
-                        <option selected disabled value="">Seleccione una categoria</option>
+                    <select  class="form-select" asp-items="Model._categories" asp-for="_profile.CategoriaId">
+                      
 
                     </select>
-                    <span data-valmsg-for="CategoriaId" data-valmsg-replace="true" class="text-danger"></span>
+                    <span data-valmsg-for="_profile.CategoriaId" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputActividad" class="form-label">Actividad Principal</label>
-                    <select name="ActividadId" class="form-select" asp-items="Model._activities" asp-for="_profile.ActividadId">
-                        <option selected disabled value="">Seleccione una actividad</option>
+                    <select  class="form-select" asp-items="Model._activities" asp-for="_profile.ActividadId">
+                       
                     </select>
-                    <span data-valmsg-for="ActividadId" data-valmsg-replace="true" class="text-danger"></span>
+                    <span data-valmsg-for="_profile.ActividadId" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputIIBB" class="form-label">Ingresos brutos totales últimos 12 meses</label>
-                    <input type="number" class="form-control" name="Iibb" asp-for="_profile.Iibb">
-                    <span data-valmsg-for="Iibb" data-valmsg-replace="true" class="text-danger"></span>
+                    <input type="number" class="form-control" asp-for="_profile.Iibb">
+                    <span data-valmsg-for="_profile.Iibb" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <label for="inputCompras" class="form-label">Compras totales últimos 12 meses</label>
-                    <input type="number" class="form-control" name="Compras" asp-for="_profile.Compras">
-                    <span data-valmsg-for="Compras" data-valmsg-replace="true" class="text-danger"></span>
+                    <input type="number" class="form-control"  asp-for="_profile.Compras">
+                    <span data-valmsg-for="_profile.Compras" data-valmsg-replace="true" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-lg-6 mt-lg-3">
                     <div class="form-check form-switch">
-                        <input id="ToggleActivo" class="form-check-input" type="checkbox" role="switch" name="Activo" value="true" checked />
+                        <input id="ToggleActivo" class="form-check-input" type="checkbox" role="switch" asp-for="_profile.Activo" value="true" checked />
                         <label id="ToggleLabel" class="form-check-label" for="ToggleActivo">Activo</label>
                     </div>
                 </div>
