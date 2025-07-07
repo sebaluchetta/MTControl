@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 using MTControl.DAO;
@@ -97,15 +98,16 @@ namespace MTControl.Controllers
 
             }
             string NombrePdf = _profileVMService.UploadFile ( perfilVM, _webHostEnvironment );
-            perfilVM._profile.Constancia = NombrePdf;
             if (perfilVM._profile.Codigo != 0)
             {
+                _profileVMService.DeleteFile ( perfilVM._profile, _webHostEnvironment );
+                perfilVM._profile.Constancia = NombrePdf;
                 _profilesService.UpdateProfile ( perfilVM._profile );
                 TempData [ "Mensaje" ] = $"El Perfil {perfilVM._profile.RazonSocial} fue actualizado correctamente";
             }
             else
             {
-
+                perfilVM._profile.Constancia = NombrePdf;
                 _profilesService.CreateProfile ( perfilVM._profile );
                 TempData [ "Mensaje" ] = $"El Perfil {perfilVM._profile.RazonSocial} fue creado correctamente";
 
@@ -197,6 +199,7 @@ namespace MTControl.Controllers
             decimal totalVentas = _saleService.GetTotalSalesAmount ( perfil._profile );
             perfil._profile.Iibb = totalVentas;
             _ProfileVM = _profileVMService.CrearProvileVM ( _activityService, _categoryService, perfil._profile );
+            ModelState.Clear ();
             return View ( "ProfileU", _ProfileVM );
         }
         /// <summary>
@@ -210,6 +213,7 @@ namespace MTControl.Controllers
             decimal totalCompras = _purchaseSercice.GetTotalPurchasesAmount ( perfil._profile );
             perfil._profile.Compras = totalCompras;
             _ProfileVM = _profileVMService.CrearProvileVM ( _activityService, _categoryService, perfil._profile );
+            ModelState.Clear ();
             return View ( "ProfileU", _ProfileVM );
         }
         #region Privados

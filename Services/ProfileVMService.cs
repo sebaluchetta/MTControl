@@ -61,7 +61,7 @@ namespace MTControl.Services
             string nombreArchivo = string.Empty;
             if (profile.Constancia is not null)
             {
-                nombreArchivo = profile.Constancia;
+                nombreArchivo = profile.Constancia.Trim();
                 string uploadDir = Path.Combine ( webHostEnvironment.WebRootPath, "Constancias" );
                 string filePath = Path.Combine ( uploadDir, nombreArchivo );
                 if (System.IO.File.Exists ( filePath ))
