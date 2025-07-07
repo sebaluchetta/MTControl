@@ -17,6 +17,8 @@ builder.Services.AddScoped<MTControl.Services.Interface.ISaleService, MTControl.
 builder.Services.AddScoped<MTControl.Services.Interface.ICalculationService, MTControl.Services.CalculationService>();
 builder.Services.AddScoped<MTControl.Services.Interface.IProfileVMService, MTControl.Services.ProfileVMService> ();
 builder.Services.AddScoped<MTControl.Services.Interface.IPagerService, MTControl.Services.PagerService> ();
+builder.Services.AddScoped<MTControl.Services.Interface.IResultService, MTControl.Services.ResultService> ();
+builder.Services.AddScoped<MTControl.Services.Interface.IResultVMService, MTControl.Services.ResultVMService> ();
 
 var app = builder.Build();
 

@@ -1,5 +1,4 @@
 ﻿using MTControl.Services.Interface;
-using MTControl.Models;
 using System.ComponentModel;
 using Microsoft.AspNetCore.Html;
 using MTControl.DAO;
@@ -24,10 +23,10 @@ namespace MTControl.Services
             {
                 Result result = new Result
                 {
-                    Profile = profile,
-                    TopeCat = new HtmlString(GetTopeCatResult ( profile )),
-                    TopeReg = new HtmlString(GeTotTopeRegResult ( profile, MaxCat )),
-                    RelComprasVentas = new HtmlString ( GetRelComprasVentasResult ( profile ) )
+                    CodProfileNavigation = profile,
+                    ToPeCategoria = GetTopeCatResult ( profile ),
+                    TopeRegimen = GeTotTopeRegResult ( profile, MaxCat ),
+                    RelComprasVentas = GetRelComprasVentasResult ( profile )
                 };
                 results.Add ( result );
             }

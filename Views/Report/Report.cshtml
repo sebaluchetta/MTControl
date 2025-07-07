@@ -1,5 +1,5 @@
-﻿@model List<Result>
-@if (Model is null)
+﻿@model ResultVM
+@if (Model is not null && Model._results.Count()==0)
 {
     <partial name="_ResultEmptyStatePartial" />
 }
@@ -20,7 +20,7 @@ else
                 <div class="col">
                     <div class="row row-cols-auto g-2">
                         <div class="col">
-                            <a class="btn btn-outline-dark disabled" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a Excel Perfil" asp-controller="Profile" asp-action="ExpExcel" disabled>
+                            <a class="btn btn-outline-dark disabled" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a Excel Perfil" asp-controller="CodProfileNavigation" asp-action="ExpExcel" disabled>
                                 <i class="bi bi-file-earmark-excel-fill">
 
                                     <p class="d-none d-md-block d-lg-inline"> Exportar a Excel</p>
@@ -29,7 +29,7 @@ else
 
                         </div>
                         <div class="col">
-                            <a class="btn btn-outline-dark disabled" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="Profile" asp-action="ExpPDF" disabled>
+                            <a class="btn btn-outline-dark disabled" data-bs-toggle="tooltip" data-bs-placement="top" role="button" title="Exportar a PDF" asp-controller="CodProfileNavigation" asp-action="ExpPDF" disabled>
                                 <i class="bi bi-file-earmark-pdf-fill">
 
                                     <p class="d-none d-md-block d-lg-inline">Exportar a PDF</p>
@@ -58,25 +58,25 @@ else
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (Result result in Model)
+                            @foreach (Result result in Model._results)
                             {
                                 <tr>
                                     <td class="g-1">
-                                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar perfil" asp-controller="Profile" asp-action="Editar" asp-route-Codigo="@result.Profile.Codigo">
+                                        <a class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar perfil" asp-controller="Profile" asp-action="Editar" asp-route-Codigo="@result.CodProfileNavigation.Codigo">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
                                     </td>
-                                    <td>@result.Profile.Codigo</td>
-                                    <td>@result.Profile.RazonSocial</td>
-                                    <td>@result.Profile.Cuit.Substring( 0, 2 )-@result.Profile.Cuit.Substring( 2, 8 )-@result.Profile.Cuit.Substring( 10, 1 )</td>
-                                    <td>@result.Profile.Actividad.Descripcion</td>
-                                    <td>@result.Profile.Categoria.Letra</td>
-                                    <td>@result.Profile.Iibb.ToString( "C", new System.Globalization.CultureInfo( "es-AR" ) )</td>
-                                    <td>@result.Profile.Compras.ToString( "C", new System.Globalization.CultureInfo( "es-AR" ) )</td>
+                                    <td>@result.CodProfileNavigation.Codigo</td>
+                                    <td>@result.CodProfileNavigation.RazonSocial</td>
+                                    <td>@result.CodProfileNavigation.Cuit.Substring( 0, 2 )-@result.CodProfileNavigation.Cuit.Substring( 2, 8 )-@result.CodProfileNavigation.Cuit.Substring( 10, 1 )</td>
+                                    <td>@result.CodProfileNavigation.Actividad.Descripcion</td>
+                                    <td>@result.CodProfileNavigation.Categoria.Letra</td>
+                                    <td>@result.CodProfileNavigation.Iibb.ToString( "C", new System.Globalization.CultureInfo( "es-AR" ) )</td>
+                                    <td>@result.CodProfileNavigation.Compras.ToString( "C", new System.Globalization.CultureInfo( "es-AR" ) )</td>
 
-                                    <td>@result.TopeCat</td>
-                                    <td>@result.TopeReg</td>
-                                    <td class=" fs-6">@result.RelComprasVentas</td>
+                                    <td>@Html.Raw(result.ToPeCategoria)</td>
+                                    <td>@Html.Raw(result.TopeRegimen)</td>
+                                    <td class=" fs-6">@Html.Raw(result.RelComprasVentas)</td>
                                 </tr>
                             }
                         </tbody>
@@ -87,6 +87,7 @@ else
             </div>
         </div>
     </div>
+    <partial name="_PagerPartial" />
 }
 
 
