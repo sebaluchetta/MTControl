@@ -9,9 +9,10 @@ namespace MTControl.Models
         Result _result { get; set; }
         
         public List<Result> _results { get; set; }
-        public string controller { get; set; } = "Report";
+        public string controller { get; set; }= "Report";
         public string action { get; set; } = "Report";
         public Pager _pager { get; set; }
+        public int _pageSize { get; set; }
         public int _currentPage { get; set; }
        
     }

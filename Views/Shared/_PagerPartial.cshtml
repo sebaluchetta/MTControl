@@ -1,32 +1,43 @@
-﻿@if (Model._pager.TotalPages > 0)
+﻿@if (Model._pager.TotalPages > 0)  
 {
     <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end">
-            @if (Model._pager.CurrentPage > 1)
-            {
-                <li class="page-item">
-                    <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-pg="1">Primera</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-pg="@(Model._pager.CurrentPage - 1)">Anterior</a>
-                </li>
-            }
-            @for (var pge = Model._pager.StartPage; pge <= Model._pager.EndPage; pge++)
-            {
-                <li class="page-item @(pge == Model._pager.CurrentPage ? "active" : "")">
-                    <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-pg="@pge">@pge</a>
-                </li>
-            }
-            @if (Model._pager.CurrentPage < Model._pager.TotalPages)
-            {
-                <li class="page-item">
-                    <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-pg="@(Model._pager.CurrentPage + 1)">Siguiente</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-pg="@(Model._pager.TotalPages)">Última</a>
-                </li>
-            }
-
-        </ul>
+        <div class="d-flex justify-content-end align-items-center mb-2">
+            <form method="get" asp-controller="@Model.controller" asp-action="@Model.action" class="d-flex align-items-center me-5 gap-2">
+                <label for="items" class="form-label mb-0">Items por página:</label>
+                <select class="form-select form-select-sm" name="pageSize" id="items" onchange="this.form.submit()" style="width: auto;">
+                    @foreach (var pageSize in new [] { 5, 10, 15, 20, 25, 50, 100, 500 })
+                    {
+                        <option value="@pageSize" selected="@(Model._pager.PageSize == pageSize)">@pageSize</option>
+                    }
+                </select>
+            </form>
+            <ul class="pagination mb-0">
+                @if (Model._pager.CurrentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-pg="1">Primera</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-pg="@(Model._pager.CurrentPage - 1)">Anterior</a>
+                    </li>
+                }
+                @for (var pge = Model._pager.StartPage; pge <= Model._pager.EndPage; pge++)
+                {
+                    <li class="page-item @(pge == Model._pager.CurrentPage ? "active" : "")">
+                        <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-pg="@pge">@pge</a>
+                    </li>
+                }
+                @if (Model._pager.CurrentPage < Model._pager.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-pg="@(Model._pager.CurrentPage + 1)">Siguiente</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-pg="@(Model._pager.TotalPages)">Última</a>
+                    </li>
+                }
+            </ul>
+        </div>
     </nav>
+
 }

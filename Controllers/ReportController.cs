@@ -38,11 +38,12 @@ namespace MTControl.Controllers
 
         }
 
-        public IActionResult Report ( int pg = 1 )
+        public IActionResult Report ( int pg = 1, int pageSize=5 )
         {
             ResultVM resultVM = new ResultVM ();
             resultVM._currentPage = pg;
-           resultVM._pager = _PagerService.GetResultPager ( resultVM, _ResultService );
+            resultVM._pageSize = pageSize;
+            resultVM._pager = _PagerService.GetResultPager ( resultVM, _ResultService );
             resultVM= _ResultVMService.ResultPagination ( resultVM, _ResultService );
             return View ( resultVM );
         }
