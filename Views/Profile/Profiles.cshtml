@@ -1,4 +1,5 @@
-﻿@model List<Profile>
+﻿@using MTControl.DAO
+@model ProfileVM
 <partial name="_AlertPartial" />
 
 <div class="container-fluid">
@@ -64,7 +65,7 @@
             @if (Model is not null)
             {
 
-                @foreach (Profile pro in Model)
+                @foreach (Profile pro in Model._profiles)
                 {
                     <tr>
                         <td class="g-1">
@@ -99,5 +100,37 @@
             }
         </tbody>
     </table>
+    @if (Model._pager.TotalPages > 0)
+    {
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                @if (Model._pager.CurrentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="Profile" asp-action="Profiles" asp-route-pg="1">Primera</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="Profile" asp-action="Profiles" asp-route-pg="@(Model._pager.CurrentPage - 1)">Anterior</a>
+                    </li>
+                }
+                @for (var pge = Model._pager.StartPage; pge <= Model._pager.EndPage; pge++)
+                {
+                    <li class="page-item @(pge == Model._pager.CurrentPage ? "active" : "")">
+                        <a class="page-link" asp-controller="Profile" asp-action="Profiles" asp-route-pg="@pge">@pge</a>
+                    </li>
+                }
+                @if (Model._pager.CurrentPage < Model._pager.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="Profile" asp-action="Profiles" asp-route-pg="@(Model._pager.CurrentPage + 1)">Siguiente</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="Profile" asp-action="Profiles" asp-route-pg="@(Model._pager.TotalPages)">Última</a>
+                    </li>
+                }
+
+            </ul>
+        </nav>
+    }
 
 </div>

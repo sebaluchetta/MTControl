@@ -1,5 +1,5 @@
 ﻿using MTControl.Services.Interface;
-using MTControl.Models;
+using MTControl.DAO;
 namespace MTControl.Services
 {
     public class ImageService : IImageService

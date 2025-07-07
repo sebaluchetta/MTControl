@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MTControl.Models;
+namespace MTControl.DAO;
 
 public partial class Category
 {

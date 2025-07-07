@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace MTControl.Models;
+namespace MTControl.DAO;
 
 public partial class Profile
 {
