@@ -56,7 +56,7 @@ namespace MTControl.Controllers
         {
             ProfileVM _ProfileVM = new ProfileVM ();
             _ProfileVM._currentPage = pg;
-            _ProfileVM._pager=_pagerService.CalcularProfilePager(_ProfileVM,_profilesService);
+            _ProfileVM._pager=_pagerService.GetProfilePager(_ProfileVM,_profilesService);
             _ProfileVM= _profileVMService.ProfilePagination ( _ProfileVM, _profilesService );
            
             return View ( _ProfileVM );

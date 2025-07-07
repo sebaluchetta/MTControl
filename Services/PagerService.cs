@@ -6,7 +6,7 @@ namespace MTControl.Services
 {
     public class PagerService : IPagerService
     {
-        public Pager CalcularProfilePager ( ProfileVM profileVM, IProfilesService profilesService )
+        public Pager GetProfilePager ( ProfileVM profileVM, IProfilesService profilesService )
         {
             int pg = profileVM._currentPage < 1 ? 1 : profileVM._currentPage;
             int pageSize = 10;
@@ -18,21 +18,16 @@ namespace MTControl.Services
         }
 
 
-        //public Pager CalcularResultPager ( int pg, ResultVM resultVM, ICalculationService calculationService )
-        //{
-        //    const int pageSize = 10;
-        //    if (pg < 1)
-        //    {
-        //        pg = 1;
-        //    }
+        public Pager GetResultPager ( ResultVM resultVM, IResultService resultService )
+        {
+            int pg = resultVM._currentPage < 1 ? 1 : resultVM._currentPage;
+            int pageSize = 10;
 
-        //    resultVM._results = new List<Result>();
-        //    int totalitems = calculationService.GetResults ().Count;
-        //    Pager pager = new Pager ( totalitems, pg, pageSize );
-        //    int skip = (pg - 1) * pageSize;
-
-        //    return pager;
-        //}
+            resultVM._results = new List<Result> ();
+            int totalitems = resultService.GetAllResults ().Count;
+            Pager pager = new Pager ( totalitems, pg, pageSize );
+            return pager;
+        }
 
     }
 }

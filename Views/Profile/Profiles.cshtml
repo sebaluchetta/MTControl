@@ -100,7 +100,9 @@
             }
         </tbody>
     </table>
-    @if (Model._pager.TotalPages > 0)
+    <partial name="_PagerPartial" />
+
+   @*  @if (Model._pager.TotalPages > 0)
     {
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
@@ -131,6 +133,6 @@
 
             </ul>
         </nav>
-    }
+    } *@
 
 </div>

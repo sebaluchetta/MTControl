@@ -45,4 +45,5 @@ public partial class Profile
     public virtual ICollection<Purchase> Purchases { get; set; } = new List<Purchase> ();
 
     public virtual ICollection<Sale> Sales { get; set; } = new List<Sale> ();
+    public virtual ICollection<Result> Results { get; set; } = new List<Result>();
 }
