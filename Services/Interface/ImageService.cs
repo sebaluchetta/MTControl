@@ -1,5 +1,4 @@
-﻿using MTControl.Models;
-
+﻿using MTControl.DAO;
 
 namespace MTControl.Services.Interface
 {

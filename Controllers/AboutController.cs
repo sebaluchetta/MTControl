@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Mvc;
 using MTControl.Services.Interface;
 using MTControl.Services;
-using MTControl.Models;
+using MTControl.DAO;
 
 namespace MTControl.Controllers
 {

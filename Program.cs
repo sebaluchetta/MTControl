@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-using MTControl.Models;
+using MTControl.DAO;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,6 +16,7 @@ builder.Services.AddScoped<MTControl.Services.Interface.IPurchaseService, MTCont
 builder.Services.AddScoped<MTControl.Services.Interface.ISaleService, MTControl.Services.SaleService> ();
 builder.Services.AddScoped<MTControl.Services.Interface.ICalculationService, MTControl.Services.CalculationService>();
 builder.Services.AddScoped<MTControl.Services.Interface.IProfileVMService, MTControl.Services.ProfileVMService> ();
+builder.Services.AddScoped<MTControl.Services.Interface.IPagerService, MTControl.Services.PagerService> ();
 
 var app = builder.Build();
 

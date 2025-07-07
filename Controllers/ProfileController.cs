@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata;
 
+using MTControl.DAO;
 using MTControl.Models;
 using MTControl.Services;
 using MTControl.Services.Interface;
@@ -12,7 +13,7 @@ namespace MTControl.Controllers
 {
     public class ProfileController : Controller
     {
-
+        
         private List<Profile> _perfiles = new ();
 
         private ProfileVM _ProfileVM;
@@ -23,6 +24,7 @@ namespace MTControl.Controllers
         private readonly ISaleService _saleService;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IProfileVMService _profileVMService;
+        private readonly IPagerService _pagerService;
 
 
 
@@ -32,7 +34,8 @@ namespace MTControl.Controllers
                                 , IPurchaseService purchaseSercice
                                 , ISaleService saleService
                                 , IWebHostEnvironment webHostEnvironment
-                                , IProfileVMService profileVMService )
+                                , IProfileVMService profileVMService
+                                ,IPagerService pagerService)
         {
 
             _profilesService = profilesService;
@@ -42,16 +45,21 @@ namespace MTControl.Controllers
             _saleService = saleService;
             _webHostEnvironment = webHostEnvironment;
             _profileVMService = profileVMService;
+            _pagerService = pagerService;
         }
 
         /// <summary>
         /// Carga la grilla de Perfiles
         /// </summary>
         /// <returns></returns>
-        public IActionResult Profiles ()
+        public IActionResult Profiles (int pg=1)
         {
-            _perfiles = _profilesService.GetProfiles ();
-            return View ( _perfiles );
+            ProfileVM _ProfileVM = new ProfileVM ();
+            _ProfileVM._currentPage = pg;
+            _ProfileVM._pager=_pagerService.CalcularProfilePager(_ProfileVM,_profilesService);
+            _ProfileVM= _profileVMService.ProfilePagination ( _ProfileVM, _profilesService );
+           
+            return View ( _ProfileVM );
         }
 
         /// <summary>
@@ -80,7 +88,6 @@ namespace MTControl.Controllers
 
             if (!ModelState.IsValid)
             {
-                
                 string mensajeError=ObtenerListaErrores ();
                 TempData [ "Mensaje" ] = $"Hubo problemas al guardar el perfil: {mensajeError}. Por favor intentelo nuevamente";
                 TempData [ "MensajeColor" ] = "alert alert-danger alert-dismissible";
@@ -108,35 +115,10 @@ namespace MTControl.Controllers
 
         }
 
-        private string ObtenerListaErrores ()
-        {
-            var errores = ModelState
-                   .Values
-                   .SelectMany ( v => v.Errors )
-                   .Select ( e => e.ErrorMessage );
-            return string.Join ( ", ", errores );
-        }
-
-        private void ModelStateMod ( ProfileVM perfilVM )
-        {
-            List<string> noProfileKeys = ModelState.Keys
-                                        .Where ( k => !k.StartsWith ( "_profile." ) )
-                                        .ToList ();
-
-            foreach (var k in noProfileKeys)
-            {
-                ModelState.Remove ( k );
-
-            }
-
-            if (perfilVM._profile.Codigo == 0 && perfilVM.DocumentoPDF == null)
-            {
-                ModelState.AddModelError (
-                    nameof ( perfilVM.DocumentoPDF ),
-                    "al crear un perfil, debes adjuntar el PDF de la constancia de Inscripíon en ARCA"
-                );
-            }
-        }
+        /// <summary>
+        /// Recorre el ModelState y obtiene los mensajes de error.
+        /// </summary>
+        /// <returns>mensajes de error separados por coma</returns>
 
         /// <summary>
         /// Edita un perfilVM existente y lo carga en la vista de edición.
@@ -230,8 +212,44 @@ namespace MTControl.Controllers
             _ProfileVM = _profileVMService.CrearProvileVM ( _activityService, _categoryService, perfil._profile );
             return View ( "ProfileU", _ProfileVM );
         }
+        #region Privados
+        private string ObtenerListaErrores ()
+        {
+            var errores = ModelState
+                   .Values
+                   .SelectMany ( v => v.Errors )
+                   .Select ( e => e.ErrorMessage );
+            string mensajeError = string.Empty;
+            mensajeError = string.Join(",", errores);
+            return mensajeError;
+        }
+        /// <summary>
+        /// Modifica el Modelstate a validar segun la accion realizada
+        /// </summary>
+        /// <param name="perfilVM"></param>
+        private void ModelStateMod ( ProfileVM perfilVM )
+        {
+            //Quito los datos del ModelState que no son necesarios para la validación
+            List<string> noProfileKeys = ModelState.Keys
+                                        .Where ( k => !k.StartsWith ( "_profile." ) )
+                                        .ToList ();
 
+            foreach (var k in noProfileKeys)
+            {
+                ModelState.Remove ( k );
+            }
+            // si es un perfil nuevo, se valida que tenga el PDF adjunto
+            if (perfilVM._profile.Codigo == 0 && perfilVM.DocumentoPDF == null)
+            {
+                ModelState.AddModelError (
+                    nameof ( perfilVM.DocumentoPDF ),
+                    "al crear un perfil, debes adjuntar el PDF de la constancia de Inscripíon en ARCA"
+                );
+            }
+        }
+        #endregion
     }
 
 
 }
+

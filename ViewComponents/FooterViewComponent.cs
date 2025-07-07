@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-using MTControl.Models;
 using MTControl.Services.Interface;
 using MTControl.Services;
+using MTControl.DAO;
 
 namespace MTControl.ViewComponents
 {

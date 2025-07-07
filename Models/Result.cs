@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Html;
 
+using MTControl.DAO;
+
 namespace MTControl.Models
 {
     public class Result
