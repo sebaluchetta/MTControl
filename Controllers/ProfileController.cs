@@ -53,10 +53,11 @@ namespace MTControl.Controllers
         /// Carga la grilla de Perfiles
         /// </summary>
         /// <returns></returns>
-        public IActionResult Profiles (int pg=1)
+        public IActionResult Profiles (int pg=1 ,int pageSize=10)
         {
             ProfileVM _ProfileVM = new ProfileVM ();
             _ProfileVM._currentPage = pg;
+            _ProfileVM._pageSize = pageSize;
             _ProfileVM._pager=_pagerService.GetProfilePager(_ProfileVM,_profilesService);
             _ProfileVM= _profileVMService.ProfilePagination ( _ProfileVM, _profilesService );
            

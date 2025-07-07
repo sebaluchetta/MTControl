@@ -9,7 +9,7 @@ namespace MTControl.Services
         public Pager GetProfilePager ( ProfileVM profileVM, IProfilesService profilesService )
         {
             int pg = profileVM._currentPage < 1 ? 1 : profileVM._currentPage;
-            int pageSize = 10;
+            int pageSize = profileVM._pageSize;
 
             profileVM._profiles = new List<Profile> ();
             int totalitems = profilesService.GetProfiles ().Count;
@@ -21,7 +21,7 @@ namespace MTControl.Services
         public Pager GetResultPager ( ResultVM resultVM, IResultService resultService )
         {
             int pg = resultVM._currentPage < 1 ? 1 : resultVM._currentPage;
-            int pageSize = 10;
+            int pageSize = resultVM._pageSize;
 
             resultVM._results = new List<Result> ();
             int totalitems = resultService.GetAllResults ().Count;

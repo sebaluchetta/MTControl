@@ -12,6 +12,7 @@ namespace MTControl.Models
         public List<Profile> _profiles { get; set; }
         public Pager _pager { get; set; }
         public int _currentPage { get; set; }
+        public int _pageSize { get; set; }
         public string? controller { get; set; }= "Profile";
         public string? action { get; set; } = "Profiles";    
 
